@@ -56,6 +56,7 @@ public class CategoriasController {
 		esporte.adicionar("Corrida");
 		esporte.adicionar("Natação");
 		esporte.adicionar("Volei");
+		esporte.adicionar("Poker");
 
 		Categoria jogos = new Categoria("Jogos");
 		jogos.adicionar("CS:GO");

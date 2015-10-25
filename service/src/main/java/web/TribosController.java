@@ -56,7 +56,7 @@ public class TribosController {
 	@POST
 	public Response adicionarTribo() {
 		Coordenada coordenada1 = new Coordenada(-19.931640, -43.938000);
-		Tribo tribo1 = new Tribo("Esporte", Arrays.asList(DiaDaSemana.TERCA, DiaDaSemana.SEXTA), coordenada1, "Bike");
+		Tribo tribo1 = new Tribo("Esporte", Arrays.asList(DiaDaSemana.TERCA, DiaDaSemana.SEXTA), coordenada1, "Poker");
 		Entity entity1 = tribo1.toEntity();
 		
 		Coordenada coordenada2 = new Coordenada(-19.926072, -43.922893);
@@ -64,7 +64,7 @@ public class TribosController {
 		Entity entity2 = tribo2.toEntity();
 		
 		Coordenada coordenada3 = new Coordenada(-19.923974, -43.934566);
-		Tribo tribo3 = new Tribo("Esporte", Arrays.asList(DiaDaSemana.DOMINGO, DiaDaSemana.QUARTA), coordenada3, "Futebol");
+		Tribo tribo3 = new Tribo("Esporte", Arrays.asList(DiaDaSemana.DOMINGO, DiaDaSemana.QUARTA), coordenada3, "Bike");
 		Entity entity3 = tribo3.toEntity();
 		
 		Coordenada coordenada4 = new Coordenada(-19.929219, -43.947484);
@@ -74,6 +74,14 @@ public class TribosController {
 		Coordenada coordenada5 = new Coordenada(-19.922441, -43.935725);
 		Tribo tribo5 = new Tribo("Esporte", Arrays.asList(DiaDaSemana.QUINTA), coordenada5, "Corrida");
 		Entity entity5 = tribo5.toEntity();
+		
+		Coordenada coordenada6 = new Coordenada(-19.922441, -43.935725);
+		Tribo tribo6 = new Tribo("Esporte", Arrays.asList(DiaDaSemana.QUINTA), coordenada6, "Natação");
+		Entity entity6 = tribo6.toEntity();
+		
+		Coordenada coordenada7 = new Coordenada(-19.922441, -43.935725);
+		Tribo tribo7 = new Tribo("Esporte", Arrays.asList(DiaDaSemana.QUINTA), coordenada7, "Patins");
+		Entity entity7 = tribo7.toEntity();
 
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		datastore.put(entity1);
@@ -81,6 +89,8 @@ public class TribosController {
 		datastore.put(entity3);
 		datastore.put(entity4);
 		datastore.put(entity5);
+		datastore.put(entity6);
+		datastore.put(entity7);
 
 		return Response.ok().entity(tribo1.getId()).header("Access-Control-Allow-Origin", "*")
 				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT").build();
