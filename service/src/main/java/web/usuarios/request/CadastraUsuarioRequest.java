@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "usuario")
+@XmlRootElement(name = "cadastraUsuarioRequest")
 public class CadastraUsuarioRequest {
 
 	String numero;
