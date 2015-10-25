@@ -7,8 +7,7 @@ $(function() {
 			var dadosDoFormulario = $(this).serialize(); 
 			console.log(dadosDoFormulario);
 			console.log(JSON.stringify(dadosDoFormulario));
-
-			// enviar para o prediction
+			
 			// enviar para api
 
 			$('#pronto').show();
