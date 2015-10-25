@@ -30,8 +30,7 @@ angular.module('controllers.tribos', ['services', 'utilitarios', 'mapa'])
 
 
         $scope.tribos = Tribos.porAtividade(atividadesDoUsuario, tribos);
-        console.log($scope.tribos);
-        $scope.tribosPertos = Tribos.porAtividdeComDistanciaMaxima($scope.tribos, 100000);
+        $scope.tribosPertos = Tribos.porAtividdeComDistanciaMaxima($scope.tribos, null, 5);
         memoriaDeTribos.salvar($scope);
       });
     });
@@ -44,8 +43,8 @@ angular.module('controllers.tribos', ['services', 'utilitarios', 'mapa'])
       tribos.map(function(tribo) {
         Categorias.obterPorAtividade(tribo.atividade, function(categoria) {
 
-          var nomeDoIcone = categoria.nome === "Jogos" ? 'Jogos' : tribo.atividade;
-          mapa.marcar(tribo.coordenada, 'css/img/' + nomeDoIcone + '.png');
+          var nomeDoIcone = categoria.nome === "Jogos" ? 'Jogos' : tribo.atividade.replace('ç', 'c').replace('ã', 'a');
+          mapa.marcar(tribo.coordenada, 'css/img/' + nomeDoIcone.toLowerCase() + '.png');
         });
       });
     });

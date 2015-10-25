@@ -125,6 +125,7 @@ angular.module('services', [])
 		},
 
 		porAtividdeComDistanciaMaxima: function(tribos, atividades, distnciaMaximaEmKilometros) {
+
 			var tribosDentroDaDistancia = tribos.filter(function(tribo) {
 				return tribo.distancia <= distnciaMaximaEmKilometros
 			});
