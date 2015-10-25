@@ -11,7 +11,7 @@ angular.module('controllers.tribos', ['services', 'utilitarios', 'mapa'])
         return;
 
       var tribosEncontradas = $scope.tribos.filter(function(tribo) {
-        return tribo.categoria.toUpperCase().indexOf(termoDaBusca) > -1;
+        return tribo.nome.toUpperCase().indexOf(termoDaBusca) > -1;
       });
 
       $scope.tribos = tribosEncontradas;
