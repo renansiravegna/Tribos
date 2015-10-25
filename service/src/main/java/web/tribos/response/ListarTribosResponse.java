@@ -1,27 +1,32 @@
 package web.tribos.response;
 
-import java.util.Date;
+import java.util.List;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "tribos")
 public class ListarTribosResponse {
 	
-	private String categoria;
+	String categoria;
+
+	List<String> diasDaSemana;
 	
-	private Date data;
+	Integer populacao;
 	
-	private Integer populacao;
-	
-	private Coordenada coordenada;
+	Coordenada coordenada;
 	
 	public ListarTribosResponse() {
 	}
 
-	public ListarTribosResponse(String categoria, Date data, Integer populacao, Coordenada coordenada) {
+	public ListarTribosResponse(String categoria, List<String> diasDaSemana, Integer populacao, Coordenada coordenada) {
 		this.categoria = categoria;
-		this.data = data;
+		this.diasDaSemana = diasDaSemana;
 		this.populacao = populacao;
 		this.coordenada = coordenada;
 	}
 
+	@XmlElement
 	public String getCategoria() {
 		return categoria;
 	}
@@ -29,15 +34,8 @@ public class ListarTribosResponse {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
-
-	public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
-	}
-
+	
+	@XmlElement
 	public Integer getPopulacao() {
 		return populacao;
 	}
@@ -45,12 +43,22 @@ public class ListarTribosResponse {
 	public void setPopulacao(Integer populacao) {
 		this.populacao = populacao;
 	}
-
+	
+	@XmlElement
 	public Coordenada getCoordenada() {
 		return coordenada;
 	}
 
 	public void setCoordenada(Coordenada coordenada) {
 		this.coordenada = coordenada;
+	}
+
+	@XmlElement
+	public List<String> getDiasDaSemana() {
+		return diasDaSemana;
+	}
+
+	public void setDiasDaSemana(List<String> diasDaSemana) {
+		this.diasDaSemana = diasDaSemana;
 	}
 }

@@ -1,0 +1,13 @@
+<ion-view view-title="Refine ainda mais!">
+	<ion-content class="padding">
+		<div ng-repeat="atividade in atividades" class="list card">
+			<div class="item item-checkbox">
+				<label class="checkbox">
+					<input type="checkbox" ng-checked="atividade.selecionada" ng-click="this.atividade.selecionada = !this.atividade.selecionada" /></label>
+				{{atividade.nome}}
+			</div>
+		</div>
+
+		<button class="button button-full button-balanced" ng-click="salvar()">Buscar minhas tribos!</button>
+	</ion-content>
+</ion-view>

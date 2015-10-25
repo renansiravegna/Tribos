@@ -1,1 +1,26 @@
-/* Empty. Add your own CSS if you like */
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300italic,300,400italic,500,500italic,700,700italic);
+.border-box, body, body .view-container, body .view-container .pane, body .view-container .view {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.background-cover {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -ms-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
+body {
+  font-family: "Roboto", sans-serif; }
+  body .view-container .pane .menu-content .nav-bar-container .nav-bar-block .bar-stable {
+    background-color: #13846B;
+    color: #fff; }
+  body .view-container .pane .menu-content .nav-bar-container .nav-bar-block .button {
+    color: #fff; }
+  body .view-container .pane .menu-content .nav-bar-container .nav-bar-block .title {
+    color: #fff; }
+
+/*# sourceMappingURL=style.css.map */

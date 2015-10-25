@@ -1,0 +1,1 @@
+angular.module('controllers', ['controllers.home', 'controllers.app', 'controllers.tribos', 'controllers.perfil', 'controllers.atividades']);

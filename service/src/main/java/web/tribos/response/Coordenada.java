@@ -1,10 +1,14 @@
 package web.tribos.response;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "coordenada")
 public class Coordenada {
 
-	private Double latitude;
+	Double latitude;
 	
-	private Double longitude;
+	Double longitude;
 	
 	public Coordenada() {
 	}
@@ -14,6 +18,7 @@ public class Coordenada {
 		this.longitude = longitude;
 	}
 
+	@XmlElement
 	public Double getLatitude() {
 		return latitude;
 	}
@@ -21,7 +26,8 @@ public class Coordenada {
 	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
-
+	
+	@XmlElement
 	public Double getLongitude() {
 		return longitude;
 	}

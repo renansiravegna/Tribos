@@ -1,0 +1,7 @@
+.border-box{
+    @include vendors(box-sizing, border-box);
+}
+
+.background-cover{
+    @include vendors(background-size, cover);
+}
