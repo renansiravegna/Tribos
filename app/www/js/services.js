@@ -1,6 +1,6 @@
 angular.module('services', [])
 
-.factory('Categorias', function(localStorage) {
+.factory('Categorias', function($http, localStorage) {
 	var dados = [{
 		nome: 'Esportes'
 	}, {
@@ -11,6 +11,10 @@ angular.module('services', [])
 
 	return {
 		todas: function() {
+			return $http.get('http://tribos-1096.appspot.com/s/categorias/');
+		},
+
+		todasOffline: function() {
 			return dados;
 		},
 
@@ -32,7 +36,7 @@ angular.module('services', [])
 .factory('Atividades', function(localStorage) {
 	var dados = [{
 		nome: 'Patins',
-		categoria: 'Esportes'
+		categoria: 'Esporte'
 	}, {
 		nome: 'Poker',
 		categoria: 'Jogos presenciais'
@@ -42,6 +46,9 @@ angular.module('services', [])
 	}, {
 		nome: 'CS:GO',
 		categoria: 'Jogos'
+	}, {
+		nome: 'Teatro',
+		categoria: 'Cultura'
 	}];
 
 	return {
