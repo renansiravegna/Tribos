@@ -184,5 +184,23 @@ body{
                 }
             }
         }
+        
+        .exibicao-tribos, .card-tribos{
+            @extend .sem-box-shadow;
+        
+            border-bottom: 1px dotted rgba(255,255,255, 0.5) !important;
+            .item{
+                background-color: $cor-verde-escuro;
+                @extend .sem-box-shadow;
+                h2, p, span{
+                    color: $cor-branco;   
+                }
+                strong{
+                    color: rgba(255,255,255, 0.7);
+                    font-size: 1.2em;
+                }
+            }
+            
+        }
     }
 }
