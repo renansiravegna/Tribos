@@ -6,6 +6,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class ListarCategoriasResponse {
 
 	String nome;
+	
+	public ListarCategoriasResponse() {
+	}
+
+	public ListarCategoriasResponse(String nome) {
+		this.nome = nome;
+	}
 
 	public String getNome() {
 		return nome;

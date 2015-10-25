@@ -3,7 +3,7 @@
 		<div ng-repeat="atividade in atividades" class="list card">
 			<div class="item item-checkbox">
 				<label class="checkbox">
-					<input type="checkbox" ng-checked="atividade.selecionado" ng-click="this.atividade.selecionado = !this.atividade.selecionado" /></label>
+					<input type="checkbox" ng-checked="atividade.selecionada" ng-click="this.atividade.selecionada = !this.atividade.selecionada" /></label>
 				{{atividade.nome}}
 			</div>
 		</div>
