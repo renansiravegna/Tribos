@@ -12,13 +12,9 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 
 	<script type="text/javascript" src="assets/library/jquery.min.js"></script>
-	<script type="text/javascript" src="node_modules/semantic-ui/dist/semantic.min.js"></script>
-	<script type="text/javascript" src="inputmask.min.js"></script>
-	<script type="text/javascript" src="jquery.inputmask.min.js"></script>
-	<script type="text/javascript" src="default.js"></script>
+
 </head>
 <body>
-
 <div class="pusher">
 	<div class="ui inverted vertical masthead center aligned segment" id="header">
 		<div class="ui text container">
@@ -36,31 +32,9 @@
 		<form class="ui form padding">
 			<h3>Cadastre-se e receba novidades</h3>
 			<br />
-			
-			<div class="field">
-				<input type="text" name="nome" placeholder="Informe seu nome" class="required">
-			</div>
-
-			<div class="field">
-				<input type="number" name="idade" placeholder="Informe sua idade" class="required">
-			</div>
 
 			<div class="field">
 				<input type="tel" name="celular" placeholder="Informe seu número de celular" class="required">
-			</div>
-
-			<div class="field sexo">
-				<label>Informe seu sexo:</label>
-
-				<div class="ui radio checkbox">
-					<input type="radio" name="sexo" value="m" class="hidden required">
-					<label>Masculino</label>
-				</div>
-
-				<div class="ui radio checkbox">
-					<input type="radio" name="sexo" value="f" class="hidden required">
-					<label>Feminino</label>
-				</div>
 			</div>
 
 			<br />
@@ -87,7 +61,7 @@
 			</div>
 
 			<br />
-			<button class="ui button primary" type="submit">Cadastrar e receber novidades</button>
+			<button class="ui button primary" type="submit" disabled data-texto="Cadastrar e receber novidades">Carregando...</button>
 
 			<div class="ui success message" id="pronto">
 				<i class="close icon"></i>
@@ -109,6 +83,13 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript" src="node_modules/semantic-ui/dist/semantic.min.js"></script>
+<script type="text/javascript" src="inputmask.min.js"></script>
+<script type="text/javascript" src="jquery.inputmask.min.js"></script>
+<script type="text/javascript" src="default.js"></script>
+<script type="text/javascript" src="googleApi.js"></script>
+<script src="https://apis.google.com/js/client.js?onload=quandoCarregarAPagina"></script>
 
 </body>
 
