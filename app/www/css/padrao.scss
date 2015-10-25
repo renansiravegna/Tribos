@@ -100,5 +100,66 @@ body{
                 background-color: $cor-verde-escuro;
             }
         }
+        
+        .button-full {
+            background-color: $cor-laranja-padrao;
+            color: $cor-branco;
+            border-color: $cor-laranja-escuro;
+        }
+        
+        .padding {
+            .card{
+                @include espacamento;
+            }
+        }
+        
+        .checkbox {
+            input{
+                position: absolute;
+                top:0;
+                right: 0;
+                
+                &:before{
+                    background: transparent;
+                    border-color: transparent;
+                }
+                
+                &:checked{
+                    background: orange;
+                    border-color: transparent;
+                }
+            }
+        }
+        label.checkbox{
+            padding: 0.5em 0.5em 0.5em 3em !important;
+            @extend .border-box;
+            display: block;
+            color: $cor-branco;
+            font-size: 1.25em;
+            font-weight: 300;
+        }
+        
+        .list{
+            background-color: transparent;
+            border-color: transparent;
+            @include border-radius;
+            @extend .sem-box-shadow;
+            border-bottom:1px dotted rgba(255,255,255, 0.5);
+            
+            .item{
+                background-color: transparent;
+                border-color: transparent;
+                @extend .sem-box-shadow;
+                @include espacamento(0, 1em);
+                
+                .checkbox{
+                    position: relative;
+                    @include espacamento;
+                    top:0;
+                    right: 0;
+                    left: 0;
+                }
+            }
+        }
     }
 }

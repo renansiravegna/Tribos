@@ -14,8 +14,12 @@
 @mixin icones($tamanho:32px){
     width: $tamanho;
     height: $tamanho;
-    @include espacamento(5px, 0);
+    @include espacamento(0.5em, 0);
     display: inline-block;
     vertical-align: middle;
-    @include vendors(background-size, contain !important);
+    position: absolute;
+}
+
+@mixin border-radius($valor: 0){
+    @include vendors(border-radius, $valor);
 }
