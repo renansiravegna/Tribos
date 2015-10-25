@@ -15,7 +15,12 @@ angular.module('services', [])
 		},
 
 		selecionadas: function() {
-			return localStorage.get('categorias');
+			var categorias = localStorage.get('categorias') || [];
+			var categoriasSelecionadas = categorias.filter(function(categoria) {
+				return categoria.selecionada;
+			});
+
+			return categoriasSelecionadas;
 		},
 
 		salvar: function(categorias) {
@@ -24,7 +29,7 @@ angular.module('services', [])
 	}
 })
 
-.factory('Atividades', function() {
+.factory('Atividades', function(localStorage) {
 	var dados = [{
 		nome: 'Patins',
 		categoria: 'Esportes'
@@ -40,6 +45,10 @@ angular.module('services', [])
 	}];
 
 	return {
+		todas: function() {
+			return dados;
+		},
+
 		porCategoria: function(categorias) {
 			var atividades = [];
 
@@ -54,6 +63,18 @@ angular.module('services', [])
 			});
 
 			return atividades;
+		},
+
+		selecionadas: function() {
+			var atividades = localStorage.get('atividades') || [];
+
+			return atividades.filter(function(atividade) {
+				return atividade.selecionada;
+			});
+		},
+
+		salvar: function(atividades) {
+			localStorage.set('atividades', atividades);
 		}
 	};
 })
@@ -63,7 +84,7 @@ angular.module('services', [])
 
 	function tratarInformacoesCalculadas(tribos) {
 		return tribos.map(function(tribo) {
-			tribo.data = moment(tribo.data).format('DD/MM/YYYY HH:mm:ss');
+			tribo.dataFormatada = moment(tribo.data).format('DD/MM/YYYY HH:mm:ss');
 			tribo.distancia = calcularDistancia.calcular($rootScope.coordenada, tribo.coordenada);
 
 			return tribo;
@@ -71,11 +92,26 @@ angular.module('services', [])
 	}
 
 	return {
-		todas: function() {
-			return tratarInformacoesCalculadas(dados);
+		porAtividade: function(atividades) {
+			var tribos = [];
+
+			if (atividades.length === 0)
+				return dados;
+
+			atividades.map(function(atividade) {
+				var tribosDaCategoria = dados.filter(function(tribo) {
+					return atividade.nome === tribo.categoria;
+				});
+
+				tribosDaCategoria.map(function(tribo) {
+					tribos.push(tribo);
+				});
+			});
+
+			return tratarInformacoesCalculadas(tribos);
 		},
 
-		porDistanciaMaxima: function(distnciaMaximaEmKilometros) {
+		porAtividdeComDistanciaMaxima: function(distnciaMaximaEmKilometros) {
 			var tribos = tratarInformacoesCalculadas(dados);
 			var tribosDentroDaDistancia = tribos.filter(function(tribo) {
 				return tribo.distancia <= distnciaMaximaEmKilometros
