@@ -24,8 +24,8 @@ angular.module('utilitarios', [])
 
 .factory('geolocalizacao', function($rootScope, $cordovaGeolocation) {
 	$rootScope.coordenada = {
-		latitude: -20.497409,
-		longitude: -54.627691
+		latitude: -19.933856,
+		longitude: -43.938515
 	};
 
 	var self = {
