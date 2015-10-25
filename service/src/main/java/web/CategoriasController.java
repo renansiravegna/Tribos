@@ -13,9 +13,14 @@ import javax.ws.rs.core.Response;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
 
 import model.categoria.Categoria;
+import model.tribo.Tribo;
 import web.categorias.response.ListarCategoriasResponse;
+import web.tribos.response.ListarTribosResponse;
 
 @Path("categorias")
 @Produces(value = MediaType.APPLICATION_JSON)
@@ -24,12 +29,22 @@ public class CategoriasController {
 
 	@GET
 	public Response listar() {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Query q = new Query(Categoria.class.getName());
+		PreparedQuery pq = datastore.prepare(q);
+		
+		ListarCategoriasResponse categoriasResponse;
 		List<ListarCategoriasResponse> categorias = new ArrayList<>();
-		
-		categorias.add(new ListarCategoriasResponse("Esporte"));
-		categorias.add(new ListarCategoriasResponse("Cultura"));
-		categorias.add(new ListarCategoriasResponse("Lazer"));
-		
+		for (Entity entity : pq.asIterable()) {
+			categoriasResponse = new ListarCategoriasResponse();
+			
+			Categoria categoria = new Categoria(entity);
+			categoriasResponse.setNome(categoria.getNome());
+			categoriasResponse.setAtividades(categoria.getAtividades());
+			
+			categorias.add(categoriasResponse);
+		}
+
 		return Response.ok().entity(categorias).header("Access-Control-Allow-Origin", "*")
 				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT").build();
 	}
