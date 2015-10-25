@@ -1,5 +1,23 @@
 angular.module('utilitarios', [])
 
+.factory('localStorage', function() {
+	return {
+		set: function(key, value) {
+			window.localStorage[key] = JSON.stringify(value);
+		},
+		get: function(key, defaultValue) {
+			var valor = window.localStorage[key];
+			return JSON.parse(valor || defaultValue);
+		},
+		setObject: function(key, value) {
+			window.localStorage[key] = JSON.stringify(value);
+		},
+		getObject: function(key) {
+			return JSON.parse(window.localStorage[key] || '{}');
+		}
+	}
+})
+
 .factory('geolocalizacao', function($rootScope, $cordovaGeolocation) {
 	$rootScope.coordenada = {
 		latitude: -20.497409,

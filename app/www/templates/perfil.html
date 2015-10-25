@@ -1,5 +1,14 @@
-<ion-view view-title="Perfil">
-  <ion-content class="padding" ng-controller="TribosCtrl">
-    <h1>Perfil</h1>
-  </ion-content>
+<ion-view view-title="Do que você gosta?">
+	<ion-content class="padding">
+		<div ng-repeat="categoria in categorias" class="list card">
+			<div class="item item-checkbox">
+				<label class="checkbox">
+					<input type="checkbox" ng-checked="categoria.selecionada" ng-click="this.categoria.selecionada = !this.categoria.selecionada" />
+				</label>
+				{{categoria.nome}}
+			</div>
+		</div>
+
+		<button class="button button-full button-balanced" ng-click="salvar()">Pronto!</button>
+	</ion-content>
 </ion-view>

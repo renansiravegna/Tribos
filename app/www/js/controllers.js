@@ -1,7 +1,6 @@
 angular.module('starter.controllers', ['services', 'utilitarios', 'mapa'])
 
-.controller('AppCtrl', function($scope) {
-})
+.controller('AppCtrl', function($scope, $ionicModal, $timeout) {})
 
 .controller('TribosCtrl', function($rootScope, $scope, geolocalizacao, Tribos, mapa) {
   $scope.buscar = function() {
@@ -30,5 +29,24 @@ angular.module('starter.controllers', ['services', 'utilitarios', 'mapa'])
   mapa.criar('mapa', $rootScope.coordenada).marcarReferencia($rootScope.coordenada);
 })
 
-.controller('PerfilCtrl', function($scope) {
+.controller('PerfilCtrl', function($scope, $state, Categorias) {
+  $scope.categorias = Categorias.todas();
+
+  $scope.salvar = function() {
+    var categoriasSelecionadas = $scope.categorias.filter(function(categoria) {
+      return categoria.selecionada;
+    });
+
+    Categorias.salvar(categoriasSelecionadas);
+    $state.go('app.atividades');
+  };
+})
+
+.controller('AtividadesCtrl', function($scope, $state, Categorias, Atividades) {
+  var categoriasSelecionadas = Categorias.selecionadas();
+  $scope.atividades = Atividades.porCategoria(categoriasSelecionadas);
+
+  $scope.salvar = function() {
+    $state.go('app.tribos');
+  }
 });

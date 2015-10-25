@@ -1,5 +1,63 @@
 angular.module('services', [])
 
+.factory('Categorias', function(localStorage) {
+	var dados = [{
+		nome: 'Esportes'
+	}, {
+		nome: 'Jogos presenciais'
+	}, {
+		nome: 'Jogos'
+	}];
+
+	return {
+		todas: function() {
+			return dados;
+		},
+
+		selecionadas: function() {
+			return localStorage.get('categorias');
+		},
+
+		salvar: function(categorias) {
+			localStorage.set('categorias', categorias);
+		}
+	}
+})
+
+.factory('Atividades', function() {
+	var dados = [{
+		nome: 'Patins',
+		categoria: 'Esportes'
+	}, {
+		nome: 'Poker',
+		categoria: 'Jogos presenciais'
+	}, {
+		nome: 'Magic',
+		categoria: 'Jogos presenciais'
+	}, {
+		nome: 'CS:GO',
+		categoria: 'Jogos'
+	}];
+
+	return {
+		porCategoria: function(categorias) {
+			var atividades = [];
+
+			categorias.map(function(categoria) {
+				var atividadesDaCategoria = dados.filter(function(atividade) {
+					return categoria.nome === atividade.categoria;
+				});
+
+				atividadesDaCategoria.map(function(atividade) {
+					atividades.push(atividade);
+				});
+			});
+
+			return atividades;
+		}
+	};
+})
+
 .factory('Tribos', function($rootScope, calcularDistancia) {
 	var dados = JSON.parse('[{"data":1445775882016,"coordenada":{"latitude":-20.453751,"longitude":-54.572491},"populacao":15,"categoria":"Patins"},{"data":1445775882018,"coordenada":{"latitude":-20.469711,"longitude":-54.620121},"populacao":20,"categoria":"Poker"},{"data":1445775882018,"coordenada":{"latitude":-20.469711,"longitude":-54.620121},"populacao":47,"categoria":"Livros"}]');
 

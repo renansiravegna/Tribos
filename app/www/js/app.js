@@ -52,7 +52,17 @@ angular.module('starter', ['ionic', 'ngCordova', 'filtros', 'starter.controllers
         controller: 'PerfilCtrl'
       }
     }
+  })
+
+  .state('app.atividades', {
+    url: '/atividades',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/atividades.html',
+        controller: 'AtividadesCtrl'
+      }
+    }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/tribos');
+  $urlRouterProvider.otherwise('/app/perfil');
 });
