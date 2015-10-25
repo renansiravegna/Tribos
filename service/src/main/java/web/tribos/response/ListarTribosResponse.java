@@ -1,6 +1,5 @@
 package web.tribos.response;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;

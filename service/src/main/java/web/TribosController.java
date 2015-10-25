@@ -10,6 +10,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
@@ -28,7 +29,7 @@ import web.tribos.response.ListarTribosResponse;
 public class TribosController {
 
 	@GET
-	public List<ListarTribosResponse> listar() {
+	public Response listar() {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Query q = new Query(Tribo.class.getName());
 		PreparedQuery pq = datastore.prepare(q);
@@ -47,11 +48,12 @@ public class TribosController {
 			listarTribosResponse.add(triboResponse);
 		}
 
-		return listarTribosResponse;
+		return Response.ok().entity(listarTribosResponse).header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT").build();
 	}
 
 	@POST
-	public String adicionarTribo() {
+	public Response adicionarTribo() {
 		Coordenada coordenada = new Coordenada(-20.453751, -54.572491);
 		Tribo tribo = new Tribo("Patins", Arrays.asList(DiaDaSemana.TERCA, DiaDaSemana.SEXTA), coordenada);
 		Entity triboEntity = tribo.toEntity();
@@ -59,6 +61,7 @@ public class TribosController {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		datastore.put(triboEntity);
 
-		return tribo.getId();
+		return Response.ok().entity(tribo.getId()).header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT").build();
 	}
 }
