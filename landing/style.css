@@ -99,6 +99,9 @@
 .ui.primary.button:hover {
 	background-color: #C07300;
 }
+.ui.primary.button.disabled {
+	background-color: #f0f;
+}
 
 @media only screen and (max-width: 700px) {
 
