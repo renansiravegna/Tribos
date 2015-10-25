@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'ngCordova', 'filtros', 'controllers'])
+angular.module('starter', ['ionic', 'ngCordova', 'filtros', 'controllers', 'utilitarios'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -61,5 +61,15 @@ angular.module('starter', ['ionic', 'ngCordova', 'filtros', 'controllers'])
     }
   });
 
-  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise(function() {
+    var jaPassouPelaHome = localStorage['jaPassouPelaHome'];
+
+    if (jaPassouPelaHome)
+      return '/app/perfil';
+
+    console.log(jaPassouPelaHome);
+
+    localStorage['jaPassouPelaHome'] = true;
+    return '/home';
+  });
 });
