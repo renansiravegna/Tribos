@@ -60,12 +60,8 @@ angular.module('services', [])
 			var atividades = [];
 
 			categorias.map(function(categoria) {
-				var atividadesDaCategoria = dados.filter(function(atividade) {
-					return categoria.nome === atividade.categoria;
-				});
-
-				atividadesDaCategoria.map(function(atividade) {
-					atividades.push(atividade);
+				categoria.atividades.map(function(atividade) {
+					atividades.push({ nome: atividade });
 				});
 			});
 
