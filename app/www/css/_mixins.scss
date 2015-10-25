@@ -1,0 +1,13 @@
+@mixin vendors($atributo, $valor){
+	-webkit-#{$atributo}: #{$valor};
+	-moz-#{$atributo}: #{$valor};
+	-ms-#{$atributo}: #{$valor};
+	-o-#{$atributo}: #{$valor};
+	#{$atributo}: #{$valor};
+}
+
+@mixin espacamento($margin, $padding){
+    margin: $margin;
+    padding: $padding;
+}
+
