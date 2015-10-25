@@ -1,4 +1,4 @@
-var url = 'http://tribos-1096.appspot.com';
+var url = 'http://localhost:8080';
 var formularioDeCadastro = $('#cadastro form');
 var botaoDeSubmit = $('button[type="submit"]', formularioDeCadastro);
 
@@ -11,11 +11,25 @@ $(function() {
 	$(formularioDeCadastro).on('submit', function(e){
 		e.preventDefault();
 		$('#pronto').hide();
-
+		
+		var dados = { numero: $('#numero').val(), atividades: [] };
+		
+		$(':checkbox:checked').each(function(index, checkbox) {
+			dados.atividades.push(checkbox.value);
+		});
+		
+		var json = JSON.stringify(dados);
+		
 		if(validarCadastro()) {
-			$.post(url + '/s/usuarios', $(formularioDeCadastro).serialize(), function( data ) {
-				$('#pronto').show();
-			});
+			$.ajax({
+				type: 'POST',
+				url: url + '/s/usuarios',
+				data: json,
+				contentType: 'application/json',
+				success: function( data ) {
+					$('#pronto').show();
+				}
+			})
 		}
 	});
 
@@ -34,7 +48,7 @@ function imprimirCategoriasEAtividades(listaDeCategorias) {
 
 			$.each(categoria.atividades, function(j, atividade){
 				html += '<div class="ui checkbox">';
-				html += '	<input type="checkbox" name="categoria[]" value="' + atividade + '" class="hidden required">';
+				html += '	<input type="checkbox" name="atividades" value="' + atividade + '" class="hidden required">';
 				html += '	<label>' + atividade + '</label>';
 				html += '</div>';
 			});

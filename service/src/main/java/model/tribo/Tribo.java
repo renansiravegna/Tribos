@@ -11,37 +11,41 @@ import web.tribos.response.Coordenada;
 
 public class Tribo extends EntidadeBase {
 
-	private String categoria;
+	private String nome;
 	
 	private List<DiaDaSemana> diasDaSemana = new ArrayList<>();
 	
 	private Coordenada coordenada;
 
+	private String atividade;
+
 	public Tribo() {
 		super();
 	}
 
-	public Tribo(String categoria, List<DiaDaSemana> diasDaSemana, Coordenada coordenada) {
+	public Tribo(String nome, List<DiaDaSemana> diasDaSemana, Coordenada coordenada, String atividade) {
 		super();
-		this.categoria = categoria;
+		this.nome = nome;
 		this.diasDaSemana = diasDaSemana;
 		this.coordenada = coordenada;
+		this.setAtividade(atividade);
 	}
 	
 	@SuppressWarnings("unchecked")
 	public Tribo(Entity entity) {
 		id = entity.getProperty("id").toString();
-		categoria = entity.getProperty("categoria").toString();
+		nome = entity.getProperty("nome").toString();
 		coordenada = new Gson().fromJson(entity.getProperty("coordenada").toString(), Coordenada.class);
 		diasDaSemana = DiaDaSemana.converter((List<String>) entity.getProperty("diasDaSemana"));
+		setAtividade(entity.getProperty("atividade").toString());
 	}
 
-	public String getCategoria() {
-		return categoria;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 	public List<String> getDiasDaSemana() {
@@ -68,10 +72,19 @@ public class Tribo extends EntidadeBase {
 	public Entity toEntity() {
 		Entity entity = new Entity(Tribo.class.getName());
 		entity.setProperty("id", id);
-		entity.setProperty("categoria", categoria);
+		entity.setProperty("nome", nome);
+		entity.setProperty("atividade", getAtividade());
 		entity.setProperty("diasDaSemana", getDiasDaSemana());
 		entity.setProperty("coordenada", new Gson().toJson(coordenada));
 		
 		return entity;
+	}
+
+	public String getAtividade() {
+		return atividade;
+	}
+
+	public void setAtividade(String atividade) {
+		this.atividade = atividade;
 	}
 }

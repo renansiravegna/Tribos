@@ -18,9 +18,7 @@ import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 
 import model.categoria.Categoria;
-import model.tribo.Tribo;
 import web.categorias.response.ListarCategoriasResponse;
-import web.tribos.response.ListarTribosResponse;
 
 @Path("categorias")
 @Produces(value = MediaType.APPLICATION_JSON)
@@ -58,6 +56,7 @@ public class CategoriasController {
 		esporte.adicionar("Corrida");
 		esporte.adicionar("Natação");
 		esporte.adicionar("Volei");
+		esporte.adicionar("Poker");
 
 		Categoria jogos = new Categoria("Jogos");
 		jogos.adicionar("CS:GO");

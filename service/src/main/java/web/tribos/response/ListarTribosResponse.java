@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "tribos")
 public class ListarTribosResponse {
 	
-	String categoria;
+	String nome;
 
 	List<String> diasDaSemana;
 	
@@ -16,23 +16,26 @@ public class ListarTribosResponse {
 	
 	Coordenada coordenada;
 	
+	String atividade;
+	
 	public ListarTribosResponse() {
 	}
 
-	public ListarTribosResponse(String categoria, List<String> diasDaSemana, Integer populacao, Coordenada coordenada) {
-		this.categoria = categoria;
+	public ListarTribosResponse(String categoria, List<String> diasDaSemana, Integer populacao, Coordenada coordenada, String atividade) {
+		this.nome = categoria;
 		this.diasDaSemana = diasDaSemana;
 		this.populacao = populacao;
 		this.coordenada = coordenada;
+		this.atividade = atividade;
 	}
 
 	@XmlElement
-	public String getCategoria() {
-		return categoria;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 	@XmlElement
@@ -60,5 +63,13 @@ public class ListarTribosResponse {
 
 	public void setDiasDaSemana(List<String> diasDaSemana) {
 		this.diasDaSemana = diasDaSemana;
+	}
+
+	public void setAtividade(String atividade) {
+		this.atividade = atividade;
+	}
+	
+	public String getAtividade() {
+		return atividade;
 	}
 }
