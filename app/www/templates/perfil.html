@@ -2,6 +2,7 @@
 	<ion-content class="padding">
 		<div ng-repeat="categoria in categorias" class="list card">
 			<div class="item item-checkbox">
+                <div class="icone-{{categoria.nome}}"></div>
 				<label class="checkbox">
 					<input type="checkbox" ng-checked="categoria.selecionada" ng-click="this.categoria.selecionada = !this.categoria.selecionada" />
 				</label>
