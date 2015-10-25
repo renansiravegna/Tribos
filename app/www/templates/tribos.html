@@ -6,15 +6,11 @@
 
     <div class="card exibicao-tribos" ng-repeat="tribo in tribosPertos">
       <div class="item item-text-wrap">
-        <h2>Tribo de {{tribo.categoria}} </h2>
+        <h2>Tribo de {{tribo.nome}} </h2>
         <p>
             Distância:
             <span>{{coordenada | distance: tribo.coordenada}} de você</span>
         </p>
-          <p>
-              Último encontro: 
-              <span>{{tribo.dataFormatada}}</span>
-          </p>
       </div>
     </div>
 
