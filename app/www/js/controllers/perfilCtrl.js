@@ -1,18 +1,20 @@
 angular.module('controllers.perfil', ['services', 'utilitarios', 'mapa'])
-.controller('PerfilCtrl', function($scope, $state, Categorias) {
-  var categoriasSelecionadas = Categorias.selecionadas();
+  .controller('PerfilCtrl', function($scope, $state, Categorias) {
+    var categoriasSelecionadas = Categorias.selecionadas();
 
-  $scope.categorias = Categorias.todas();
+    Categorias.todas().then(function(resposta) {
+      $scope.categorias = resposta.data;
 
-  categoriasSelecionadas.map(function(categoriaSelecionada) {
-    $scope.categorias.map(function(categoria) {
-      if (categoria.nome === categoriaSelecionada.nome)
-        categoria.selecionada = true;
+      categoriasSelecionadas.map(function(categoriaSelecionada) {
+        $scope.categorias.map(function(categoria) {
+          if (categoria.nome === categoriaSelecionada.nome)
+            categoria.selecionada = true;
+        });
+      });
     });
-  });
 
-  $scope.salvar = function() {
-    Categorias.salvar($scope.categorias);
-    $state.go('app.atividades');
-  };
-});
+    $scope.salvar = function() {
+      Categorias.salvar($scope.categorias);
+      $state.go('app.atividades');
+    };
+  });

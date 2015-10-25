@@ -1,6 +1,6 @@
 angular.module('services', [])
 
-.factory('Categorias', function(localStorage) {
+.factory('Categorias', function($http, localStorage) {
 	var dados = [{
 		nome: 'Esportes'
 	}, {
@@ -11,6 +11,10 @@ angular.module('services', [])
 
 	return {
 		todas: function() {
+			return $http.get('http://tribos-1096.appspot.com/s/categorias/');
+		},
+
+		todasOffline: function() {
 			return dados;
 		},
 
@@ -32,7 +36,7 @@ angular.module('services', [])
 .factory('Atividades', function(localStorage) {
 	var dados = [{
 		nome: 'Patins',
-		categoria: 'Esportes'
+		categoria: 'Esporte'
 	}, {
 		nome: 'Poker',
 		categoria: 'Jogos presenciais'
@@ -42,6 +46,9 @@ angular.module('services', [])
 	}, {
 		nome: 'CS:GO',
 		categoria: 'Jogos'
+	}, {
+		nome: 'Teatro',
+		categoria: 'Cultura'
 	}];
 
 	return {
@@ -79,7 +86,7 @@ angular.module('services', [])
 	};
 })
 
-.factory('Tribos', function($rootScope, calcularDistancia) {
+.factory('Tribos', function($rootScope, $http, calcularDistancia) {
 	var dados = JSON.parse('[{"data":1445775882016,"coordenada":{"latitude":-20.453751,"longitude":-54.572491},"populacao":15,"categoria":"Patins"},{"data":1445775882018,"coordenada":{"latitude":-20.469711,"longitude":-54.620121},"populacao":20,"categoria":"Poker"},{"data":1445775882018,"coordenada":{"latitude":-20.469711,"longitude":-54.620121},"populacao":47,"categoria":"Livros"}]');
 
 	function tratarInformacoesCalculadas(tribos) {
@@ -92,6 +99,12 @@ angular.module('services', [])
 	}
 
 	return {
+		todas: function() {
+			return $http.get('http://tribos-1096.appspot.com/s/categorias/', function(dados2) {
+				return dados2;
+			});
+		},
+
 		porAtividade: function(atividades) {
 			var tribos = [];
 

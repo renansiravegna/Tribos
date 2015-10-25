@@ -1,9 +1,13 @@
 $(function() {
-	$('#cadastro').on('submit', function(e){
+	$('#cadastro form').on('submit', function(e){
 		e.preventDefault();
 		$('#pronto').hide();
 
 		if(validarCadastro()) {
+			var dadosDoFormulario = $(this).serialize(); 
+			console.log(dadosDoFormulario);
+			console.log(JSON.stringify(dadosDoFormulario));
+
 			// enviar para o prediction
 			// enviar para api
 

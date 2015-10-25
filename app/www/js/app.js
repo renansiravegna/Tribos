@@ -1,9 +1,9 @@
-angular.module('starter', ['ionic', 'ngCordova', 'filtros', 'controllers'])
+angular.module('starter', ['ionic', 'ngCordova', 'filtros', 'controllers', 'utilitarios'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     moment.locale('pt_BR');
-    
+
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
@@ -18,7 +18,13 @@ angular.module('starter', ['ionic', 'ngCordova', 'filtros', 'controllers'])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-    .state('app', {
+    .state('home', {
+    url: '/home',
+    controller: 'HomeCtrl',
+    templateUrl: 'templates/home.html'
+  })
+
+  .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
@@ -55,5 +61,15 @@ angular.module('starter', ['ionic', 'ngCordova', 'filtros', 'controllers'])
     }
   });
 
-  $urlRouterProvider.otherwise('/app/tribos');
+  $urlRouterProvider.otherwise(function() {
+    var jaPassouPelaHome = localStorage['jaPassouPelaHome'];
+
+    if (jaPassouPelaHome)
+      return '/app/perfil';
+
+    console.log(jaPassouPelaHome);
+
+    localStorage['jaPassouPelaHome'] = true;
+    return '/home';
+  });
 });
