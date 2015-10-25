@@ -41,27 +41,11 @@
 			<div class="field" id="gostos">
 				<h2>O que você curte?</h2>
 
-				<h4>Esporte</h4>
-
-				<div class="field">
-					<div class="ui checkbox">
-						<input type="checkbox" name="categoria" class="hidden required">
-						<label>Patins</label>
-					</div>
-					<div class="ui checkbox">
-						<input type="checkbox" name="categoria" class="hidden required">
-						<label>Skate</label>
-					</div>
-					<div class="ui checkbox">
-						<input type="checkbox" name="categoria" class="hidden required">
-						<label>Bicicleta</label>
-					</div>
-				</div>
-
+				<div class="ui message info carregando">Aguarde, carregando...</div>
 			</div>
 
 			<br />
-			<button class="ui button primary" type="submit" disabled data-texto="Cadastrar e receber novidades">Carregando...</button>
+			<button class="ui button primary" type="submit" disabled data-texto="Cadastrar e receber novidades" data-carregando="Carregando...">Carregando...</button>
 
 			<div class="ui success message" id="pronto">
 				<i class="close icon"></i>
@@ -88,8 +72,6 @@
 <script type="text/javascript" src="inputmask.min.js"></script>
 <script type="text/javascript" src="jquery.inputmask.min.js"></script>
 <script type="text/javascript" src="default.js"></script>
-<script type="text/javascript" src="googleApi.js"></script>
-<script src="https://apis.google.com/js/client.js?onload=quandoCarregarAPagina"></script>
 
 </body>
 

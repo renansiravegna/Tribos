@@ -11,10 +11,7 @@ function checkAuth() {
 
 function quandoEstiverAutorizado(resultado) {
 	if (resultado && !resultado.error) {
-		var botaoDeSubmit = $('#cadastro button[type="submit"]');
-		botaoDeSubmit.removeAttr('disabled')
-					 .html(botaoDeSubmit.data('texto'));
-
+		// apos ter acesso ao gapi
 	} else if(!resultado) {
 		quandoCarregarAPagina();
 	} else {
