@@ -1,3 +1,6 @@
+.bar.bar-stable{
+    border-color: none;
+}
 body{
     font-family: $font-family;
     @extend .border-box;
@@ -5,8 +8,27 @@ body{
     .view-container{
         @extend .border-box;
         
+        input.ng-pristine, input.ng-valid{
+            position: absolute;
+            width: 95%;
+            z-index: 10;
+            left: 2.5%;
+            top:0.3em;
+            border: 1px solid rgba(0,0,0,0.2);
+            @extend .border-box;
+            padding: 0.5em;
+            background-color: rgba(255,255,255,0.9);
+            color: $cor-fonte-padrao;
+        }
+        
         .pane{
             @extend .border-box;
+            background-color: $cor-verde-escuro;
+            border-color: transparent;
+            
+            .bar-stable{
+                background-color: transparent;
+            }
             
             .menu-content{
                 
@@ -15,8 +37,9 @@ body{
                     .nav-bar-block{
                         
                         .bar-stable{
-                            background-color: $cor-verde-padrao;
+                            background-color: $cor-verde-bem-escuro;
                             color:$cor-branco;
+                            border-color: transparent;
                         }
                         
                         .button{
@@ -35,6 +58,47 @@ body{
         
         .view{
             @extend .border-box;
+        }
+        
+        .menu.menu-left{
+            background-color: $cor-verde-escuro;
+            
+            .bar-header{
+                background-color: $cor-verde-bem-escuro;
+                border:none;
+                position: relative;
+                
+                h1{
+                    color: $cor-branco;
+                }
+                &:after {
+                    top: 100%;
+                    border: solid transparent;
+                    content: " ";
+                    height: 0;
+                    width: 0;
+                    position: absolute;
+                    pointer-events: none;
+                    border-color: rgba(136, 183, 213, 0);
+                    border-top-color: $cor-verde-bem-escuro;
+                    border-width: 0.5em;
+                    margin-left: 1em;
+                }
+            }
+            
+            .item{
+                border-color: transparent;
+                
+                a{
+                    &.item-content{
+                        background-color: $cor-verde-escuro;
+                        color: $cor-branco;
+                        border-bottom: 1px dotted rgb(255,255,255);
+                        border-bottom: 1px dotted rgba(255,255,255, 0.5);
+                    }
+                }
+                background-color: $cor-verde-escuro;
+            }
         }
     }
 }

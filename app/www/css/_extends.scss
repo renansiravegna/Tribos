@@ -5,3 +5,12 @@
 .background-cover{
     @include vendors(background-size, cover);
 }
+
+.pega-imagem{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    @extend .background-cover;
+    background-position: center center;
+    @include vendors(backgorund-size, countain);
+    @extend .pega-imagem;
+}

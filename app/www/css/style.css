@@ -1,26 +1,99 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300italic,300,400italic,500,500italic,700,700italic);
-.border-box, body, body .view-container, body .view-container .pane, body .view-container .view {
+.border-box, body, body .view-container, body .view-container input.ng-pristine, body .view-container input.ng-valid, body .view-container .pane, body .view-container .view {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
   -o-box-sizing: border-box;
   box-sizing: border-box; }
 
-.background-cover {
+.background-cover, .pega-imagem, .icone-Esportes {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -ms-background-size: cover;
   -o-background-size: cover;
   background-size: cover; }
 
+.pega-imagem, .icone-Esportes {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-backgorund-size: countain;
+  -moz-backgorund-size: countain;
+  -ms-backgorund-size: countain;
+  -o-backgorund-size: countain;
+  backgorund-size: countain; }
+
+.bar.bar-stable {
+  border-color: none; }
+
 body {
   font-family: "Roboto", sans-serif; }
-  body .view-container .pane .menu-content .nav-bar-container .nav-bar-block .bar-stable {
-    background-color: #13846B;
-    color: #fff; }
-  body .view-container .pane .menu-content .nav-bar-container .nav-bar-block .button {
-    color: #fff; }
-  body .view-container .pane .menu-content .nav-bar-container .nav-bar-block .title {
-    color: #fff; }
+  body .view-container input.ng-pristine, body .view-container input.ng-valid {
+    position: absolute;
+    width: 95%;
+    z-index: 10;
+    left: 2.5%;
+    top: 0.3em;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 0.5em;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #444444; }
+  body .view-container .pane {
+    background-color: #03634E;
+    border-color: transparent; }
+    body .view-container .pane .bar-stable {
+      background-color: transparent; }
+    body .view-container .pane .menu-content .nav-bar-container .nav-bar-block .bar-stable {
+      background-color: #003B2E;
+      color: #fff;
+      border-color: transparent; }
+    body .view-container .pane .menu-content .nav-bar-container .nav-bar-block .button {
+      color: #fff; }
+    body .view-container .pane .menu-content .nav-bar-container .nav-bar-block .title {
+      color: #fff; }
+  body .view-container .menu.menu-left {
+    background-color: #03634E; }
+    body .view-container .menu.menu-left .bar-header {
+      background-color: #003B2E;
+      border: none;
+      position: relative; }
+      body .view-container .menu.menu-left .bar-header h1 {
+        color: #fff; }
+      body .view-container .menu.menu-left .bar-header:after {
+        top: 100%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: rgba(136, 183, 213, 0);
+        border-top-color: #003B2E;
+        border-width: 0.5em;
+        margin-left: 1em; }
+    body .view-container .menu.menu-left .item {
+      border-color: transparent;
+      background-color: #03634E; }
+      body .view-container .menu.menu-left .item a.item-content {
+        background-color: #03634E;
+        color: #fff;
+        border-bottom: 1px dotted white;
+        border-bottom: 1px dotted rgba(255, 255, 255, 0.5); }
+
+.icone-Esportes {
+  background-image: url(icones/patins.svg);
+  width: 24px;
+  height: 24px;
+  margin: 5px;
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-background-size: contain !important;
+  -moz-background-size: contain !important;
+  -ms-background-size: contain !important;
+  -o-background-size: contain !important;
+  background-size: contain !important; }
+.icone-videogame {
+  background-image: url(icones/videogame.svg); }
 
 /*# sourceMappingURL=style.css.map */
