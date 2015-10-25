@@ -1,6 +1,7 @@
 package web.tribos.response;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -9,8 +10,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class ListarTribosResponse {
 	
 	String categoria;
-	
-	Date data;
+
+	List<String> diasDaSemana;
 	
 	Integer populacao;
 	
@@ -19,9 +20,9 @@ public class ListarTribosResponse {
 	public ListarTribosResponse() {
 	}
 
-	public ListarTribosResponse(String categoria, Date data, Integer populacao, Coordenada coordenada) {
+	public ListarTribosResponse(String categoria, List<String> diasDaSemana, Integer populacao, Coordenada coordenada) {
 		this.categoria = categoria;
-		this.data = data;
+		this.diasDaSemana = diasDaSemana;
 		this.populacao = populacao;
 		this.coordenada = coordenada;
 	}
@@ -35,15 +36,6 @@ public class ListarTribosResponse {
 		this.categoria = categoria;
 	}
 	
-	@XmlElement
-	public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
-	}
-
 	@XmlElement
 	public Integer getPopulacao() {
 		return populacao;
@@ -60,5 +52,14 @@ public class ListarTribosResponse {
 
 	public void setCoordenada(Coordenada coordenada) {
 		this.coordenada = coordenada;
+	}
+
+	@XmlElement
+	public List<String> getDiasDaSemana() {
+		return diasDaSemana;
+	}
+
+	public void setDiasDaSemana(List<String> diasDaSemana) {
+		this.diasDaSemana = diasDaSemana;
 	}
 }
