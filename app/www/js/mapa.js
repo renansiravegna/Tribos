@@ -2,7 +2,7 @@ angular.module('mapa', [])
 
 .factory('mapa', function() {
 	var self = {};
-	var _mapa, _referencia, _circle;
+	var _mapa, _marcadores = [], _referencia, _circle;
 
 	self.criar = function(container, coordenada, zoom) {
 		var mapa = document.getElementById(container);
@@ -19,6 +19,43 @@ angular.module('mapa', [])
 
 		return self;
 	};
+
+	self.marcarReferencia = function(coordenada) {
+		_referencia = marcar(coordenada);
+		_circle = circular(coordenada);
+
+		return self;
+	};
+
+	self.alterarReferencia = function(coordenada) {
+		_mapa.setCenter({ lat: coordenada.latitude, lng: coordenada.longitude });
+		_referencia.setPosition({ lat: coordenada.latitude, lng: coordenada.longitude });
+		_circle.setCenter({ lat: coordenada.latitude, lng: coordenada.longitude });
+
+		return self;
+	};
+
+	self.marcar = function(coordenada, icone, detalhes) {
+		var marcador = marcar(coordenada, icone);
+		_marcadores.push(marcador);
+
+		if(detalhes) {
+			marcador.janela = new google.maps.InfoWindow();
+			marcador.janela.setContent(detalhes);
+
+			google.maps.event.addListener(marcador, 'click', function() {
+				marcador.janela.open(_mapa, this);
+			});
+		}
+
+		return self;
+	};
+
+	self.limparMarcadores = function() {
+		_marcadores.map(function(marcador) {
+			marcador.setMap(null);
+		});
+	}
 
 	function marcar(coordenada, icone) {
 		var opcoes = {
@@ -46,36 +83,6 @@ angular.module('mapa', [])
 			},
 			radius: 5000
 		});
-	};
-
-	self.marcarReferencia = function(coordenada) {
-		_referencia = marcar(coordenada);
-		_circle = circular(coordenada);
-
-		return self;
-	};
-
-	self.alterarReferencia = function(coordenada) {
-		_mapa.setCenter({ lat: coordenada.latitude, lng: coordenada.longitude });
-		_referencia.setPosition({ lat: coordenada.latitude, lng: coordenada.longitude });
-		_circle.setCenter({ lat: coordenada.latitude, lng: coordenada.longitude });
-
-		return self;
-	};
-
-	self.marcar = function(coordenada, icone, detalhes) {
-		var marcador = marcar(coordenada, icone);
-
-		if(detalhes) {
-			marcador.janela = new google.maps.InfoWindow();
-			marcador.janela.setContent(detalhes);
-
-			google.maps.event.addListener(marcador, 'click', function() {
-				marcador.janela.open(_mapa, this);
-			});
-		}
-
-		return self;
 	};
 
 	return self;

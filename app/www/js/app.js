@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'ngCordova', 'filtros', 'starter.controllers'])
+angular.module('starter', ['ionic', 'ngCordova', 'filtros', 'controllers'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -55,5 +55,5 @@ angular.module('starter', ['ionic', 'ngCordova', 'filtros', 'starter.controllers
     }
   });
 
-  $urlRouterProvider.otherwise('/app/perfil');
+  $urlRouterProvider.otherwise('/app/tribos');
 });

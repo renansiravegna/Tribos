@@ -84,7 +84,7 @@ angular.module('services', [])
 
 	function tratarInformacoesCalculadas(tribos) {
 		return tribos.map(function(tribo) {
-			tribo.data = moment(tribo.data).format('DD/MM/YYYY HH:mm:ss');
+			tribo.data = moment(new Date()).format('DD/MM/YYYY HH:mm:ss');
 			tribo.distancia = calcularDistancia.calcular($rootScope.coordenada, tribo.coordenada);
 
 			return tribo;
@@ -94,6 +94,9 @@ angular.module('services', [])
 	return {
 		porAtividade: function(atividades) {
 			var tribos = [];
+
+			if (atividades.length === 0)
+				return dados;
 
 			atividades.map(function(atividade) {
 				var tribosDaCategoria = dados.filter(function(tribo) {
