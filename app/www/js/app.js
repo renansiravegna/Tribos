@@ -44,6 +44,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'filtros', 'starter.controllers
     }
   })
 
+  .state('app.perfil', {
+    url: '/perfil',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/perfil.html',
+        controller: 'PerfilCtrl'
+      }
+    }
+  })
+
   .state('app.search', {
     url: '/search',
     views: {

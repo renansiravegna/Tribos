@@ -68,6 +68,9 @@ angular.module('starter.controllers', ['services', 'utilitarios', 'mapa'])
   mapa.criar('mapa', $rootScope.coordenada).marcarReferencia($rootScope.coordenada);
 })
 
+.controller('PerfilCtrl', function($scope) {
+})
+
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [{
     title: 'Reggae',
