@@ -1,0 +1,7 @@
+.icone-{
+    @include icones;
+    
+    &patins{
+        background-image: url(icones/patins.svg);
+    }
+}

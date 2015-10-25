@@ -1,0 +1,28 @@
+@mixin vendors($atributo, $valor){
+	-webkit-#{$atributo}: #{$valor};
+	-moz-#{$atributo}: #{$valor};
+	-ms-#{$atributo}: #{$valor};
+	-o-#{$atributo}: #{$valor};
+	#{$atributo}: #{$valor};
+}
+
+@mixin espacamento($margin:0, $padding:0){
+    margin: $margin;
+    padding: $padding;
+}
+
+@mixin pega-imagem($urlDoArquivo){
+    background-color: transparent;
+    background-image: url($urlDoArquivo);
+    background-repeat: no-repeat;
+    @extend .background-cover;
+    background-position: center center;
+}
+
+@mixin icones($tamanho:32px){
+    @include pega-imagem;
+    width: $tamanho;
+    height: $tamanho;
+    @include espacamento(5px, 0);
+    display: inline-block;
+}

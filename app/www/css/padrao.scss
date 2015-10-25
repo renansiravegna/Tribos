@@ -1,0 +1,40 @@
+body{
+    font-family: $font-family;
+    @extend .border-box;
+    
+    .view-container{
+        @extend .border-box;
+        
+        .pane{
+            @extend .border-box;
+            
+            .menu-content{
+                
+                .nav-bar-container{
+                    
+                    .nav-bar-block{
+                        
+                        .bar-stable{
+                            background-color: $cor-verde-padrao;
+                            color:$cor-branco;
+                        }
+                        
+                        .button{
+                            color:$cor-branco;
+                        }
+                        
+                        .title{
+                            color:$cor-branco;
+                        }
+                        
+                    }
+                }
+                
+            }
+        }
+        
+        .view{
+            @extend .border-box;
+        }
+    }
+}
