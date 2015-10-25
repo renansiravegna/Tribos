@@ -21,7 +21,6 @@ public class UsuarioController {
 	@POST
 	public Response cadastrar(CadastraUsuarioRequest cadastraUsuarioRequest) {
 		Usuario usuario = new Usuario(cadastraUsuarioRequest.getNumero(), cadastraUsuarioRequest.getAtividades());
-		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		datastore.put(usuario.toEntity());
 
