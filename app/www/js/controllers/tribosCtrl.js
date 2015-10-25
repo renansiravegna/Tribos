@@ -1,5 +1,5 @@
 angular.module('controllers.tribos', ['services', 'utilitarios', 'mapa'])
-  .controller('TribosCtrl', function($rootScope, $scope, geolocalizacao, Atividades, Tribos, mapa) {
+  .controller('TribosCtrl', function($rootScope, $scope, geolocalizacao, Atividades, Tribos, Categorias, mapa) {
     var memoriaDeTribos = new MemoriaDeTribos();
 
     $scope.buscar = function() {
@@ -36,8 +36,11 @@ angular.module('controllers.tribos', ['services', 'utilitarios', 'mapa'])
       mapa.limparMarcadores();
 
       tribos.map(function(tribo) {
-        var nomeDoIcone = tribo.categoria.toLowerCase();
-        mapa.marcar(tribo.coordenada, 'css/img/' + nomeDoIcone + '.png');
+        Categorias.obterPorAtividade(tribo.atividade, function(categoria) {
+
+          var nomeDoIcone = categoria.nome === "Jogos" ? 'Jogos' : tribo.atividade;
+          mapa.marcar(tribo.coordenada, 'css/img/' + nomeDoIcone + '.png');
+        });
       });
     });
 
