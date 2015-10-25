@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['services', 'utilitarios', 'mapa'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -41,19 +41,51 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('TribosCtrl', function($scope) {
+.controller('TribosCtrl', function($rootScope, $scope, geolocalizacao, Tribos, mapa) {
+  $scope.buscar = function() {
+    var termoDaBusca = $scope.termoDaBusca.toUpperCase();
+    var tribosEncontradas = Tribos.todas().filter(function(tribo) {
+      return tribo.categoria.toUpperCase().indexOf(termoDaBusca) > -1;
+    });
+
+    $scope.tribos = tribosEncontradas;
+  };
+
+  $rootScope.$watch('coordenada', function(coordenada) {
+    mapa.alterarReferencia(coordenada);
+  });
+
+  $scope.tribos = Tribos.todas();
+
+  $scope.$watch('tribos', function(tribos) {
+    tribos.map(function(tribo) {
+      mapa.marcar(tribo.coordenada, 'css/img/patins.png');
+    });
+  });
+
+  mapa.criar('mapa', $rootScope.coordenada).marcarReferencia($rootScope.coordenada);
 })
 
 .controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+  $scope.playlists = [{
+    title: 'Reggae',
+    id: 1
+  }, {
+    title: 'Chill',
+    id: 2
+  }, {
+    title: 'Dubstep',
+    id: 3
+  }, {
+    title: 'Indie',
+    id: 4
+  }, {
+    title: 'Rap',
+    id: 5
+  }, {
+    title: 'Cowbell',
+    id: 6
+  }];
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+.controller('PlaylistCtrl', function($scope, $stateParams) {});
