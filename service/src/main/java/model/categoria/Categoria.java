@@ -21,6 +21,18 @@ public class Categoria extends EntidadeBase {
 		super();
 		this.nome = nome;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public Categoria(Entity entity) {
+		super();
+		id = entity.getProperty("id").toString();
+		nome = entity.getProperty("nome").toString();
+		atividades = (List<String>) entity.getProperty("atividades");
+		
+		if (atividades == null) {
+			atividades = new ArrayList<>();
+		}
+	}
 
 	public String getNome() {
 		return nome;
