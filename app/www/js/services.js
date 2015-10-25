@@ -35,7 +35,7 @@ angular.module('services', [])
 	}
 })
 
-.factory('Atividades', function(localStorage) {
+.factory('Atividades', function($http, localStorage) {
 	var dados = [{
 		nome: 'Patins',
 		categoria: 'Esporte'
@@ -98,20 +98,18 @@ angular.module('services', [])
 
 	return {
 		todas: function() {
-			return $http.get('http://tribos-1096.appspot.com/s/categorias/', function(dados2) {
-				return dados2;
-			});
+			return $http.get('http://tribos-1096.appspot.com/s/categorias/');
 		},
 
-		porAtividade: function(atividades) {
+		porAtividade: function(atividades, tribosEnviadas) {
 			var tribos = [];
 
 			if (atividades.length === 0)
-				return dados;
+				return tratarInformacoesCalculadas(tribosEnviadas);
 
 			atividades.map(function(atividade) {
-				var tribosDaCategoria = dados.filter(function(tribo) {
-					return atividade.nome === tribo.categoria;
+				var tribosDaCategoria = tribosEnviadas.filter(function(tribo) {
+					return atividade.nome === tribo.atividade;
 				});
 
 				tribosDaCategoria.map(function(tribo) {
@@ -122,8 +120,11 @@ angular.module('services', [])
 			return tratarInformacoesCalculadas(tribos);
 		},
 
-		porAtividdeComDistanciaMaxima: function(atividades, distnciaMaximaEmKilometros) {
-			var tribos = this.porAtividade(atividades);
+		todasNaApi: function() {
+			return $http.get('http://tribos-1096.appspot.com/s/tribos');
+		},
+
+		porAtividdeComDistanciaMaxima: function(tribos, atividades, distnciaMaximaEmKilometros) {
 			var tribosDentroDaDistancia = tribos.filter(function(tribo) {
 				return tribo.distancia <= distnciaMaximaEmKilometros
 			});

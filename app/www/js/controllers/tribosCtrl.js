@@ -25,9 +25,15 @@ angular.module('controllers.tribos', ['services', 'utilitarios', 'mapa'])
     $scope.$on('$ionicView.beforeEnter', function() {
       var atividadesDoUsuario = Atividades.selecionadas();
 
-      $scope.tribos = Tribos.porAtividade(atividadesDoUsuario);
-      $scope.tribosPertos = Tribos.porAtividdeComDistanciaMaxima(atividadesDoUsuario, 5);
-      memoriaDeTribos.salvar($scope);
+      Tribos.todasNaApi().then(function(response) {
+        var tribos = response.data;
+
+
+        $scope.tribos = Tribos.porAtividade(atividadesDoUsuario, tribos);
+        console.log($scope.tribos);
+        $scope.tribosPertos = Tribos.porAtividdeComDistanciaMaxima($scope.tribos, 100000);
+        memoriaDeTribos.salvar($scope);
+      });
     });
 
     $scope.$watch('tribos', function(tribos) {
