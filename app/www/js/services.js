@@ -3,16 +3,19 @@ angular.module('services', [])
 .factory('Tribos', function(calcularDistancia) {
 	return {
 		todas: function() {
-			return [{
-				categoria: 'Patins',
-				coordenada: {
-					latitude: -20.497409,
-					longitude: -54.627691
-				},
-				distancia: calcularDistancia(-20.497409, -54.627691),
-				data: moment(new Date()).format('DD/MM/YYYY HH:mm:ss'),
-				populacao: 10
-			}];
+			var dados = '[{"data":1445775882016,"coordenada":{"latitude":-20.453751,"longitude":-54.572491},"populacao":15,"categoria":"Patins"},{"data":1445775882018,"coordenada":{"latitude":-20.469711,"longitude":-54.620121},"populacao":20,"categoria":"Poker"},{"data":1445775882018,"coordenada":{"latitude":-20.469711,"longitude":-54.620121},"populacao":47,"categoria":"Livros"}]';
+			// return [{
+			// 	categoria: 'Patins',
+			// 	coordenada: {
+			// 		latitude: -20.497409,
+			// 		longitude: -54.627691
+			// 	},
+			// 	distancia: calcularDistancia(-20.497409, -54.627691),
+			// 	data: moment(new Date()).format('DD/MM/YYYY HH:mm:ss'),
+			// 	populacao: 10
+			// }];
+
+			return JSON.parse(dados);
 		}
 	}
 })

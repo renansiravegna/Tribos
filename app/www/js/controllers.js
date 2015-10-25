@@ -59,7 +59,8 @@ angular.module('starter.controllers', ['services', 'utilitarios', 'mapa'])
 
   $scope.$watch('tribos', function(tribos) {
     tribos.map(function(tribo) {
-      mapa.marcar(tribo.coordenada, 'css/img/patins.png');
+      var nomeDoIcone = tribo.categoria.toLowerCase();
+      mapa.marcar(tribo.coordenada, 'css/img/' + nomeDoIcone + '.png');
     });
   });
 

@@ -4,17 +4,18 @@
 
     <div id="mapa" style="height: 350px;"></div>
 
-    <div class="card">
+    <div class="card" ng-repeat="tribo in tribos">
       <div class="item item-text-wrap">
-        <strong>40 </strong>
-        <span>pessoas com interesses similares aos seus</span>
+        <strong>Tribo de {{tribo.categoria}} </strong>
+        <br />
+        <strong>Distância: </strong><span>{{coordenada | distance: tribo.coordenada}} de você</span>
       </div>
     </div>
 
     <div class="card">
       <div class="item item-text-wrap">
-        <strong>1 </strong>
-        <span>grupo de seu interesse</span>
+        <strong>45 </strong>
+        <span>pessoas em até 5km com interesses similares ao seus</span>
       </div>
     </div>
   </ion-content>
