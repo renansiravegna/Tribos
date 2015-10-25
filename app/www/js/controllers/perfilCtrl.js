@@ -1,5 +1,5 @@
 angular.module('controllers.perfil', ['services', 'utilitarios', 'mapa'])
-  .controller('PerfilCtrl', function($scope, $state, Categorias) {
+  .controller('PerfilCtrl', function($scope, $state, Categorias, Atividades, $ionicHistory) {
     var categoriasSelecionadas = Categorias.selecionadas();
 
     Categorias.todas().then(function(resposta) {
@@ -15,6 +15,18 @@ angular.module('controllers.perfil', ['services', 'utilitarios', 'mapa'])
 
     $scope.salvar = function() {
       Categorias.salvar($scope.categorias);
-      $state.go('app.atividades');
+
+      var haAlgumaSelecionada = Categorias.selecionadas().length > 0;
+
+      if (haAlgumaSelecionada)
+        $state.go('app.atividades');
+      else {
+        $ionicHistory.nextViewOptions({
+          disableBack: true
+        });
+
+        Atividades.salvar(null);
+        $state.go('app.tribos');
+      }
     };
   });

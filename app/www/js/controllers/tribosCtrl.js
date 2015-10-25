@@ -13,7 +13,7 @@ angular.module('controllers.tribos', ['services', 'utilitarios', 'mapa'])
       mapa.alterarReferencia(coordenada);
     });
 
-    $scope.$on('$ionicView.beforeEnter', function(event, viewData) {
+    $scope.$on('$ionicView.beforeEnter', function() {
       var atividadesDoUsuario = Atividades.selecionadas();
 
       $scope.tribos = Tribos.porAtividade(atividadesDoUsuario);
