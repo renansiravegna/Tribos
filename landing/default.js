@@ -1,8 +1,9 @@
+var url = 'http://tribos-1096.appspot.com';
 var formularioDeCadastro = $('#cadastro form');
 var botaoDeSubmit = $('button[type="submit"]', formularioDeCadastro);
 
 $(function() {
-	$.getJSON('http://tribos-1096.appspot.com/s/categorias/', function(resultado){
+	$.getJSON(url + '/s/categorias/', function(resultado){
 		imprimirCategoriasEAtividades(resultado);
 		mostrarBotaoDeSubmit();
 	});
@@ -12,7 +13,7 @@ $(function() {
 		$('#pronto').hide();
 
 		if(validarCadastro()) {
-			$.post("http://tribos-1096.appspot.com/s/salvar", $(formularioDeCadastro).serialize(), function( data ) {
+			$.post(url + '/s/usuarios', $(formularioDeCadastro).serialize(), function( data ) {
 				$('#pronto').show();
 			});
 		}
