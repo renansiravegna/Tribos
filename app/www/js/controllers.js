@@ -56,6 +56,7 @@ angular.module('starter.controllers', ['services', 'utilitarios', 'mapa'])
   });
 
   $scope.tribos = Tribos.todas();
+  $scope.tribosPertos = Tribos.porDistanciaMaxima(5);
 
   $scope.$watch('tribos', function(tribos) {
     tribos.map(function(tribo) {

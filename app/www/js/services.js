@@ -1,21 +1,29 @@
 angular.module('services', [])
 
-.factory('Tribos', function(calcularDistancia) {
+.factory('Tribos', function($rootScope, calcularDistancia) {
+	var dados = JSON.parse('[{"data":1445775882016,"coordenada":{"latitude":-20.453751,"longitude":-54.572491},"populacao":15,"categoria":"Patins"},{"data":1445775882018,"coordenada":{"latitude":-20.469711,"longitude":-54.620121},"populacao":20,"categoria":"Poker"},{"data":1445775882018,"coordenada":{"latitude":-20.469711,"longitude":-54.620121},"populacao":47,"categoria":"Livros"}]');
+
+	function tratarInformacoesCalculadas(tribos) {
+		return tribos.map(function(tribo) {
+			tribo.data = moment(tribo.data).format('DD/MM/YYYY HH:mm:ss');
+			tribo.distancia = calcularDistancia.calcular($rootScope.coordenada, tribo.coordenada);
+
+			return tribo;
+		});
+	}
+
 	return {
 		todas: function() {
-			var dados = '[{"data":1445775882016,"coordenada":{"latitude":-20.453751,"longitude":-54.572491},"populacao":15,"categoria":"Patins"},{"data":1445775882018,"coordenada":{"latitude":-20.469711,"longitude":-54.620121},"populacao":20,"categoria":"Poker"},{"data":1445775882018,"coordenada":{"latitude":-20.469711,"longitude":-54.620121},"populacao":47,"categoria":"Livros"}]';
-			// return [{
-			// 	categoria: 'Patins',
-			// 	coordenada: {
-			// 		latitude: -20.497409,
-			// 		longitude: -54.627691
-			// 	},
-			// 	distancia: calcularDistancia(-20.497409, -54.627691),
-			// 	data: moment(new Date()).format('DD/MM/YYYY HH:mm:ss'),
-			// 	populacao: 10
-			// }];
+			return tratarInformacoesCalculadas(dados);
+		},
 
-			return JSON.parse(dados);
+		porDistanciaMaxima: function(distnciaMaximaEmKilometros) {
+			var tribos = tratarInformacoesCalculadas(dados);
+			var tribosDentroDaDistancia = tribos.filter(function(tribo) {
+				return tribo.distancia <= distnciaMaximaEmKilometros
+			});
+
+			return tribosDentroDaDistancia;
 		}
 	}
 })
@@ -41,12 +49,16 @@ angular.module('services', [])
 		return 0;
 	}
 
-	return function(from, to) {
-		var distanceInKm = calculate(from, to);
+	return {
+		calcular: calculate,
 
-		if (distanceInKm > 1)
-			return (distanceInKm).toFixed(1) + ' kilometros';
+		calcularComTexto: function(from, to) {
+			var distanceInKm = calculate(from, to);
 
-		return (distanceInKm * 1000).toFixed(0) + ' metros';
-	}
+			if (distanceInKm > 1)
+				return (distanceInKm).toFixed(1) + ' kilometros';
+
+			return (distanceInKm * 1000).toFixed(0) + ' metros';
+		}
+	};
 });
