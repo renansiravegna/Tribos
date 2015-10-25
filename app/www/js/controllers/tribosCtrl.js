@@ -21,6 +21,8 @@ angular.module('controllers.tribos', ['services', 'utilitarios', 'mapa'])
     });
 
     $scope.$watch('tribos', function(tribos) {
+      if (!tribos) return;
+
       mapa.limparMarcadores();
 
       tribos.map(function(tribo) {
