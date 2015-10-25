@@ -1,0 +1,130 @@
+.hidden.menu {
+	display: none;
+}
+
+.masthead.segment {
+	min-height: 28em;
+	padding: 1em 0em;
+}
+.masthead .logo.item img {
+	margin-right: 1em;
+}
+.masthead .ui.menu .ui.button {
+	margin-left: 0.5em;
+}
+.masthead h1.ui.header {
+	margin-top: 65px;
+	margin-bottom: 0em;
+	font-size: 4em;
+	font-weight: normal;
+}
+.masthead h2 {
+	font-size: 1.7em;
+	font-weight: normal;
+}
+
+.ui.vertical.stripe {
+	padding: 8em 0em;
+}
+.ui.vertical.stripe h3 {
+	font-size: 2em;
+}
+.ui.vertical.stripe .button + h3,
+.ui.vertical.stripe p + h3 {
+	margin-top: 3em;
+}
+.ui.vertical.stripe .floated.image {
+	clear: both;
+}
+.ui.vertical.stripe p {
+	font-size: 1.33em;
+}
+.ui.vertical.stripe .horizontal.divider {
+	margin: 3em 0em;
+}
+
+.quote.stripe.segment {
+	padding: 0em;
+}
+.quote.stripe.segment .grid .column {
+	padding-top: 5em;
+	padding-bottom: 5em;
+}
+
+.footer.segment {
+	padding: 5em 0em;
+}
+
+.secondary.pointing.menu .toc.item {
+	display: none;
+}
+
+.padding {
+	padding:0 2em;
+}
+
+#logo { 
+	width:6em;
+}
+
+#header, #footer {
+	background-color: #341F00;
+}
+
+#cadastro input[type="text"], 
+#cadastro input[type="tel"], 
+#cadastro input[type="number"], 
+#cadastro input[type="email"] {
+	padding: 1.5em;
+}
+
+#cadastro .sexo label:first-child {
+	display: inline-block;
+	font-size: 1em;
+	margin-right: 1em;
+}
+
+#cadastro .sexo .ui.checkbox:last-child {
+	margin-left: 1em;
+}
+
+#gostos .ui.checkbox {
+	margin-right: 1em;
+}
+
+.ui.primary.button, .ui.primary.button:focus {
+	background-color: #F39100;
+}
+
+.ui.primary.button:hover {
+	background-color: #C07300;
+}
+
+@media only screen and (max-width: 700px) {
+
+	#logo { 
+		width:10em;
+	}
+
+	.ui.fixed.menu {
+		display: none !important;
+	}
+	.secondary.pointing.menu .item,
+	.secondary.pointing.menu .menu {
+		display: none;
+	}
+	.secondary.pointing.menu .toc.item {
+		display: block;
+	}
+	.masthead.segment {
+		min-height: 24em;
+	}
+	.masthead h1.ui.header {
+		font-size: 2em;
+		margin-top: 1.5em;
+	}
+	.masthead h2 {
+		margin-top: 0.5em;
+		font-size: 1.5em;
+	}
+}
