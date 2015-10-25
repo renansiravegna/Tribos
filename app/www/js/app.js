@@ -62,14 +62,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'filtros', 'controllers', 'util
   });
 
   $urlRouterProvider.otherwise(function() {
-    var jaPassouPelaHome = localStorage['jaPassouPelaHome'];
-
-    if (jaPassouPelaHome)
-      return '/app/perfil';
-
-    console.log(jaPassouPelaHome);
-
-    localStorage['jaPassouPelaHome'] = true;
-    return '/home';
+      return '/app/tribos';
   });
 });

@@ -1,19 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300italic,300,400italic,500,500italic,700,700italic);
-.border-box, body, body .view-container, body .view-container input.ng-pristine, body .view-container input.ng-valid, body .view-container .pane, body .view-container .view {
+.border-box, body, body .view-container, body .view-container input.ng-pristine, body .view-container input.ng-valid, body .view-container .pane, body .view-container .view, body .view-container label.checkbox {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
   -o-box-sizing: border-box;
   box-sizing: border-box; }
 
-.background-cover, .pega-imagem, .icone-Esportes {
+.background-cover, .pega-imagem, body .view-container .list .item.selecionado input, .icone-Esporte, .icone-Jogos {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -ms-background-size: cover;
   -o-background-size: cover;
   background-size: cover; }
 
-.pega-imagem, .icone-Esportes {
+.pega-imagem, body .view-container .list .item.selecionado input, .icone-Esporte, .icone-Jogos {
   background-color: transparent;
   background-repeat: no-repeat;
   background-position: center center;
@@ -22,6 +22,13 @@
   -ms-backgorund-size: countain;
   -o-backgorund-size: countain;
   backgorund-size: countain; }
+
+.sem-box-shadow, body .view-container .list, body .view-container .list .item {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -ms-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none; }
 
 .bar.bar-stable {
   border-color: none; }
@@ -79,21 +86,90 @@ body {
         color: #fff;
         border-bottom: 1px dotted white;
         border-bottom: 1px dotted rgba(255, 255, 255, 0.5); }
+  body .view-container .button-full {
+    background-color: #F39200;
+    color: #fff;
+    border-color: #B26B00; }
+  body .view-container .padding .card {
+    margin: 0;
+    padding: 0; }
+  body .view-container .checkbox input {
+    position: absolute;
+    top: 0;
+    right: 0; }
+    body .view-container .checkbox input:before {
+      background: transparent;
+      border-color: transparent; }
+    body .view-container .checkbox input:after {
+      border-color: transparent; }
+    body .view-container .checkbox input:checked {
+      background: orange;
+      border-color: transparent; }
+  body .view-container label.checkbox {
+    padding: 0.5em 0.5em 0.5em 3em !important;
+    display: block;
+    color: #fff;
+    font-size: 1.25em;
+    font-weight: 300; }
+  body .view-container .list {
+    background-color: transparent;
+    border-color: transparent;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0; }
+    body .view-container .list .item {
+      background-color: transparent;
+      border-color: transparent;
+      margin: 0;
+      padding: 1em;
+      border-bottom: 1px solid #13846B;
+      margin-bottom: 0.2em; }
+      body .view-container .list .item.selecionado {
+        background-color: #369882;
+        border-bottom: 1px solid #13846B; }
+        body .view-container .list .item.selecionado input {
+          background-image: url(img/favorito.svg);
+          width: 32px;
+          height: 32px;
+          margin: 0.5em;
+          padding: 0;
+          display: inline-block;
+          vertical-align: middle;
+          position: absolute;
+          width: 2em;
+          height: 2em;
+          width: 3em;
+          height: 3em;
+          top: -1.5em;
+          right: -1.5em; }
+      body .view-container .list .item .checkbox {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        top: 0;
+        right: 0;
+        left: 0; }
 
-.icone-Esportes {
-  background-image: url(icones/patins.svg);
-  width: 24px;
-  height: 24px;
-  margin: 5px;
+.icone-Esporte {
+  background-image: url(icones/futebol.svg);
+  width: 32px;
+  height: 32px;
+  margin: 0.5em;
   padding: 0;
   display: inline-block;
   vertical-align: middle;
-  -webkit-background-size: contain !important;
-  -moz-background-size: contain !important;
-  -ms-background-size: contain !important;
-  -o-background-size: contain !important;
-  background-size: contain !important; }
-.icone-videogame {
-  background-image: url(icones/videogame.svg); }
+  position: absolute; }
+.icone-Jogos {
+  background-image: url(icones/videogame.svg);
+  width: 32px;
+  height: 32px;
+  margin: 0.5em;
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+  height: 23px; }
 
 /*# sourceMappingURL=style.css.map */

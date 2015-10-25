@@ -1,21 +1,12 @@
 angular.module('services', [])
 
 .factory('Categorias', function($http, localStorage) {
-	var dados = [{
-		nome: 'Esportes'
-	}, {
-		nome: 'Jogos presenciais'
-	}, {
-		nome: 'Jogos'
-	}];
-
 	return {
-		todas: function() {
-			return $http.get('http://tribos-1096.appspot.com/s/categorias/');
-		},
-
-		todasOffline: function() {
-			return dados;
+		todas: function(callback) {
+			return $http.get('http://tribos-1096.appspot.com/s/categorias/', function() {
+				if (callback)
+					callback.apply(this, [arguments]);
+			});
 		},
 
 		selecionadas: function() {
@@ -25,6 +16,17 @@ angular.module('services', [])
 			});
 
 			return categoriasSelecionadas;
+		},
+
+		obterPorAtividade: function(atividade, callback) {
+			$http.get('http://tribos-1096.appspot.com/s/categorias/').then(function(response) {
+				var categorias = response.data;
+				var categoriaFiltradas = categorias.filter(function(categoria) {
+					return categoria.atividades.indexOf(atividade) > -1;
+				})[0];
+
+				callback.apply(this, [categoriaFiltradas]);
+			});
 		},
 
 		salvar: function(categorias) {
@@ -83,7 +85,7 @@ angular.module('services', [])
 })
 
 .factory('Tribos', function($rootScope, $http, calcularDistancia) {
-	var dados = JSON.parse('[{"data":1445775882016,"coordenada":{"latitude":-20.453751,"longitude":-54.572491},"populacao":15,"categoria":"Patins"},{"data":1445775882018,"coordenada":{"latitude":-20.469711,"longitude":-54.620121},"populacao":20,"categoria":"Poker"},{"data":1445775882018,"coordenada":{"latitude":-20.469711,"longitude":-54.620121},"populacao":47,"categoria":"Livros"}]');
+	var dados = JSON.parse('[{"data":1445775882016,"coordenada":{"latitude":-20.453751,"longitude":-54.572491},"populacao":15,"categoria":"CS:GO","atividade":"Patins"},{"data":1445775882018,"coordenada":{"latitude":-20.469711,"longitude":-54.620121},"populacao":20,"categoria":"Destiny","atividade":"Patins"},{"data":1445775882018,"coordenada":{"latitude":-20.469711,"longitude":-54.620121},"populacao":47,"categoria":"Patins","atividade":"Patins"}]');
 
 	function tratarInformacoesCalculadas(tribos) {
 		return tribos.map(function(tribo) {
@@ -120,8 +122,8 @@ angular.module('services', [])
 			return tratarInformacoesCalculadas(tribos);
 		},
 
-		porAtividdeComDistanciaMaxima: function(distnciaMaximaEmKilometros) {
-			var tribos = tratarInformacoesCalculadas(dados);
+		porAtividdeComDistanciaMaxima: function(atividades, distnciaMaximaEmKilometros) {
+			var tribos = this.porAtividade(atividades);
 			var tribosDentroDaDistancia = tribos.filter(function(tribo) {
 				return tribo.distancia <= distnciaMaximaEmKilometros
 			});
