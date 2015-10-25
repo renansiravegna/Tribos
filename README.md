@@ -15,5 +15,4 @@ Pensa na facilidade, cheguei em uma nova cidade para um evento e sou um assíduo
 - GSON como parser JSON
 - Ionic framework para construção do app
 - AngularJS na construção da interface no Ionic
-- Google prediction para sugestão de categorias
 - Google maps para localização das tribos

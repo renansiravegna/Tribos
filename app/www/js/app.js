@@ -62,12 +62,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'filtros', 'controllers', 'util
   });
 
   $urlRouterProvider.otherwise(function() {
-    var jaPassouPelaHome = localStorage['jaPassouPelaHome'];
-
-    if (jaPassouPelaHome)
       return '/app/tribos';
-
-    localStorage['jaPassouPelaHome'] = true;
-    return '/home';
   });
 });
