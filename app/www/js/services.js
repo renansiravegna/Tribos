@@ -24,7 +24,7 @@ angular.module('services', [])
 	}
 })
 
-.factory('Atividades', function() {
+.factory('Atividades', function(localStorage) {
 	var dados = [{
 		nome: 'Patins',
 		categoria: 'Esportes'
@@ -40,6 +40,10 @@ angular.module('services', [])
 	}];
 
 	return {
+		todas: function() {
+			return dados;
+		},
+
 		porCategoria: function(categorias) {
 			var atividades = [];
 
@@ -54,6 +58,14 @@ angular.module('services', [])
 			});
 
 			return atividades;
+		},
+
+		selecionadas: function() {
+			return localStorage.get('atividades', dados);
+		},
+
+		salvar: function(atividades) {
+			localStorage.set('atividades', atividades);
 		}
 	};
 })
@@ -71,11 +83,23 @@ angular.module('services', [])
 	}
 
 	return {
-		todas: function() {
-			return tratarInformacoesCalculadas(dados);
+		porAtividade: function(atividades) {
+			var tribos = [];
+
+			atividades.map(function(atividade) {
+				var tribosDaCategoria = dados.filter(function(tribo) {
+					return atividade.nome === tribo.categoria;
+				});
+
+				tribosDaCategoria.map(function(tribo) {
+					tribos.push(tribo);
+				});
+			});
+
+			return tratarInformacoesCalculadas(tribos);
 		},
 
-		porDistanciaMaxima: function(distnciaMaximaEmKilometros) {
+		porAtividdeComDistanciaMaxima: function(distnciaMaximaEmKilometros) {
 			var tribos = tratarInformacoesCalculadas(dados);
 			var tribosDentroDaDistancia = tribos.filter(function(tribo) {
 				return tribo.distancia <= distnciaMaximaEmKilometros

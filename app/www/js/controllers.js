@@ -2,7 +2,7 @@ angular.module('starter.controllers', ['services', 'utilitarios', 'mapa'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {})
 
-.controller('TribosCtrl', function($rootScope, $scope, geolocalizacao, Tribos, mapa) {
+.controller('TribosCtrl', function($rootScope, $scope, geolocalizacao, Atividades, Tribos, mapa) {
   $scope.buscar = function() {
     var termoDaBusca = $scope.termoDaBusca.toUpperCase();
     var tribosEncontradas = Tribos.todas().filter(function(tribo) {
@@ -16,8 +16,12 @@ angular.module('starter.controllers', ['services', 'utilitarios', 'mapa'])
     mapa.alterarReferencia(coordenada);
   });
 
-  $scope.tribos = Tribos.todas();
-  $scope.tribosPertos = Tribos.porDistanciaMaxima(5);
+  $scope.$on('$ionicView.beforeEnter', function(event, viewData) {
+    var atividadesDoUsuario = Atividades.selecionadas();
+    
+    $scope.tribos = Tribos.porAtividade(atividadesDoUsuario);
+    $scope.tribosPertos = Tribos.porAtividdeComDistanciaMaxima(5);
+  });
 
   $scope.$watch('tribos', function(tribos) {
     tribos.map(function(tribo) {
@@ -47,6 +51,11 @@ angular.module('starter.controllers', ['services', 'utilitarios', 'mapa'])
   $scope.atividades = Atividades.porCategoria(categoriasSelecionadas);
 
   $scope.salvar = function() {
+    var atividadesSelecionadas = $scope.atividades.filter(function(atividade) {
+      return atividade.selecionada;
+    });
+
+    Atividades.salvar(atividadesSelecionadas);
     $state.go('app.tribos');
   }
 });

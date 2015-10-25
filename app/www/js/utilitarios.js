@@ -6,8 +6,12 @@ angular.module('utilitarios', [])
 			window.localStorage[key] = JSON.stringify(value);
 		},
 		get: function(key, defaultValue) {
-			var valor = window.localStorage[key];
-			return JSON.parse(valor || defaultValue);
+			var valor = window.localStorage.getItem(key);
+
+			if (valor)
+				return JSON.parse(valor);
+
+			return defaultValue;
 		},
 		setObject: function(key, value) {
 			window.localStorage[key] = JSON.stringify(value);
