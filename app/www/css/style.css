@@ -6,14 +6,14 @@
   -o-box-sizing: border-box;
   box-sizing: border-box; }
 
-.background-cover, .pega-imagem, body .view-container .list .item.selecionado input, .icone-Esporte, .icone-Jogos {
+.background-cover, .pega-imagem, body .view-container .list .item.selecionado input, .title, .icone-Esporte, .icone-Jogos {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -ms-background-size: cover;
   -o-background-size: cover;
   background-size: cover; }
 
-.pega-imagem, body .view-container .list .item.selecionado input, .icone-Esporte, .icone-Jogos {
+.pega-imagem, body .view-container .list .item.selecionado input, .title, .icone-Esporte, .icone-Jogos {
   background-color: transparent;
   background-repeat: no-repeat;
   background-position: center center;
@@ -160,6 +160,20 @@ body {
       body .view-container .exibicao-tribos .item strong, body .view-container .card-tribos .item strong {
         color: rgba(255, 255, 255, 0.7);
         font-size: 1.2em; }
+
+.title {
+  width: 32px;
+  height: 32px;
+  margin: 0.5em;
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+  width: 70px !important;
+  height: 24px !important;
+  margin-top: 10px !important;
+  text-indent: -9999px;
+  background-image: url(img/logo-tribos-colorida-sem-texto-branca.svg); }
 
 .icone-Esporte {
   background-image: url(icones/futebol.svg);

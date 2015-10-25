@@ -204,3 +204,14 @@ body{
         }
     }
 }
+
+.title{
+    
+    @extend .pega-imagem;
+    @include icones;
+    width: 70px !important;
+    height: 24px !important;
+    margin-top: 10px !important;
+    text-indent: -9999px;
+    background-image: url(img/logo-tribos-colorida-sem-texto-branca.svg);
+}
