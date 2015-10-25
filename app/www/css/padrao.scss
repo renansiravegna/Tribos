@@ -124,6 +124,10 @@ body{
                     border-color: transparent;
                 }
                 
+                &:after{
+                    border-color: transparent;
+                }
+                
                 &:checked{
                     background: orange;
                     border-color: transparent;
@@ -144,13 +148,32 @@ body{
             border-color: transparent;
             @include border-radius;
             @extend .sem-box-shadow;
-            border-bottom:1px dotted rgba(255,255,255, 0.5);
             
             .item{
                 background-color: transparent;
                 border-color: transparent;
                 @extend .sem-box-shadow;
                 @include espacamento(0, 1em);
+                border-bottom: 1px solid $cor-verde-padrao;
+                margin-bottom: 0.2em;
+            
+                &.selecionado{
+                    background-color: $cor-verde-claro;
+                    border-bottom: 1px solid $cor-verde-padrao;
+                    
+                    input{
+                        background-image: url(img/favorito.svg);
+                        @include icones;
+                        @extend .pega-imagem;
+                        width: 2em;
+                        height: 2em;
+                        width: 3em;
+                        height: 3em;
+                        top: -1.5em;
+                        right: -1.5em;
+                    }
+                }
+
                 
                 .checkbox{
                     position: relative;

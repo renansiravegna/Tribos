@@ -2,10 +2,11 @@
 	<ion-content class="padding">
 		<div ng-repeat="atividade in atividades" class="list card">
 			<div class="item item-checkbox">
-                <div class="{{atividade.nome}}"></div>
+                <div class="icone-{{categoria.nome}}"></div>
 				<label class="checkbox">
-					<input type="checkbox" ng-checked="atividade.selecionada" ng-click="this.atividade.selecionada = !this.atividade.selecionada" /></label>
-				{{atividade.nome}}
+				    {{atividade.nome}}
+					<input type="checkbox" ng-checked="atividade.selecionada" ng-click="this.atividade.selecionada = !this.atividade.selecionada" />
+                </label>
 			</div>
 		</div>
 
