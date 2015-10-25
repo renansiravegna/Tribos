@@ -2,15 +2,19 @@ package web.tribos.response;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "tribos")
 public class ListarTribosResponse {
 	
-	private String categoria;
+	String categoria;
 	
-	private Date data;
+	Date data;
 	
-	private Integer populacao;
+	Integer populacao;
 	
-	private Coordenada coordenada;
+	Coordenada coordenada;
 	
 	public ListarTribosResponse() {
 	}
@@ -22,6 +26,7 @@ public class ListarTribosResponse {
 		this.coordenada = coordenada;
 	}
 
+	@XmlElement
 	public String getCategoria() {
 		return categoria;
 	}
@@ -29,7 +34,8 @@ public class ListarTribosResponse {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
-
+	
+	@XmlElement
 	public Date getData() {
 		return data;
 	}
@@ -38,6 +44,7 @@ public class ListarTribosResponse {
 		this.data = data;
 	}
 
+	@XmlElement
 	public Integer getPopulacao() {
 		return populacao;
 	}
@@ -45,7 +52,8 @@ public class ListarTribosResponse {
 	public void setPopulacao(Integer populacao) {
 		this.populacao = populacao;
 	}
-
+	
+	@XmlElement
 	public Coordenada getCoordenada() {
 		return coordenada;
 	}
