@@ -22,6 +22,7 @@ public class TribosController {
 	@GET
 	public List<ListarTribosResponse> listar() {
 		List<ListarTribosResponse> listarTribosResponse = new ArrayList<>();
+		
 		listarTribosResponse.add(new ListarTribosResponse("Patins", new Date(), 15, new Coordenada(-20.453751, -54.572491)));
 		listarTribosResponse.add(new ListarTribosResponse("Poker", new Date(), 20, new Coordenada(-20.469711, -54.620121)));
 		listarTribosResponse.add(new ListarTribosResponse("Livros", new Date(), 47, new Coordenada(-20.469711, -54.620121)));
