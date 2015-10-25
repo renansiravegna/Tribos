@@ -38,27 +38,27 @@
 			<br />
 			
 			<div class="field">
-				<input type="text" name="nome" placeholder="Informe seu nome">
+				<input type="text" name="nome" placeholder="Informe seu nome" class="required">
 			</div>
 
 			<div class="field">
-				<input type="number" name="idade" placeholder="Informe sua idade">
+				<input type="number" name="idade" placeholder="Informe sua idade" class="required">
 			</div>
 
 			<div class="field">
-				<input type="tel" name="celular" placeholder="Informe seu número de celular">
+				<input type="tel" name="celular" placeholder="Informe seu número de celular" class="required">
 			</div>
 
 			<div class="field sexo">
 				<label>Informe seu sexo:</label>
 
 				<div class="ui radio checkbox">
-					<input type="radio" name="sexo" value="m" class="hidden">
+					<input type="radio" name="sexo" value="m" class="hidden required">
 					<label>Masculino</label>
 				</div>
 
 				<div class="ui radio checkbox">
-					<input type="radio" name="sexo" value="f" class="hidden">
+					<input type="radio" name="sexo" value="f" class="hidden required">
 					<label>Feminino</label>
 				</div>
 			</div>
@@ -71,15 +71,15 @@
 
 				<div class="field">
 					<div class="ui checkbox">
-						<input type="checkbox" tabindex="0" class="hidden">
+						<input type="checkbox" name="categoria" class="hidden required">
 						<label>Patins</label>
 					</div>
 					<div class="ui checkbox">
-						<input type="checkbox" tabindex="0" class="hidden">
+						<input type="checkbox" name="categoria" class="hidden required">
 						<label>Skate</label>
 					</div>
 					<div class="ui checkbox">
-						<input type="checkbox" tabindex="0" class="hidden">
+						<input type="checkbox" name="categoria" class="hidden required">
 						<label>Bicicleta</label>
 					</div>
 				</div>

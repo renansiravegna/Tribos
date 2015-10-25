@@ -4,10 +4,11 @@ $(function() {
 		$('#pronto').hide();
 
 		if(validarCadastro()) {
+			// enviar para o prediction
+			// enviar para api
 
+			$('#pronto').show();
 		}
-
-		$('#pronto').show();
 	});
 
 	$('.ui.checkbox').checkbox();
@@ -17,9 +18,29 @@ $(function() {
 });
 
 function validarCadastro() {
-	var erros = [];
+	var temErro = false;
 
-	
+	$('.field').removeClass('error');
 
-	return erros.length ? true : false;
+	function adicionarErro(campo) {
+		$(campo).parents('.field').addClass('error');
+		temErro = true;
+	}
+
+	$('input.required').each(function(){
+		var campo = this;
+
+		if($(campo).is('[type="checkbox"],[type="radio"]') ) {
+			var name = $(campo).attr('name'); 
+			var opcoesMarcadas = $('input[name="' + name + '"]:checked');
+
+			if(opcoesMarcadas.length === 0)
+				adicionarErro(campo);
+		} else {
+			if(!$(campo).val())
+				adicionarErro(campo);
+		}
+	});
+
+	return !temErro;
 }
