@@ -60,12 +60,8 @@ angular.module('services', [])
 			var atividades = [];
 
 			categorias.map(function(categoria) {
-				var atividadesDaCategoria = dados.filter(function(atividade) {
-					return categoria.nome === atividade.categoria;
-				});
-
-				atividadesDaCategoria.map(function(atividade) {
-					atividades.push(atividade);
+				categoria.atividades.map(function(atividade) {
+					atividades.push({ nome: atividade });
 				});
 			});
 
@@ -87,7 +83,7 @@ angular.module('services', [])
 })
 
 .factory('Tribos', function($rootScope, $http, calcularDistancia) {
-	var dados = JSON.parse('[{"data":1445775882016,"coordenada":{"latitude":-20.453751,"longitude":-54.572491},"populacao":15,"categoria":"Patins"},{"data":1445775882018,"coordenada":{"latitude":-20.469711,"longitude":-54.620121},"populacao":20,"categoria":"Poker"},{"data":1445775882018,"coordenada":{"latitude":-20.469711,"longitude":-54.620121},"populacao":47,"categoria":"Livros"}]');
+	var dados = JSON.parse('[{"data":1445775882016,"coordenada":{"latitude":-20.453751,"longitude":-54.572491},"populacao":15,"categoria":"CS:GO"},{"data":1445775882018,"coordenada":{"latitude":-20.469711,"longitude":-54.620121},"populacao":20,"categoria":"Destiny"},{"data":1445775882018,"coordenada":{"latitude":-20.469711,"longitude":-54.620121},"populacao":47,"categoria":"Patins"}]');
 
 	function tratarInformacoesCalculadas(tribos) {
 		return tribos.map(function(tribo) {
@@ -124,8 +120,8 @@ angular.module('services', [])
 			return tratarInformacoesCalculadas(tribos);
 		},
 
-		porAtividdeComDistanciaMaxima: function(distnciaMaximaEmKilometros) {
-			var tribos = tratarInformacoesCalculadas(dados);
+		porAtividdeComDistanciaMaxima: function(atividades, distnciaMaximaEmKilometros) {
+			var tribos = this.porAtividade(atividades);
 			var tribosDentroDaDistancia = tribos.filter(function(tribo) {
 				return tribo.distancia <= distnciaMaximaEmKilometros
 			});

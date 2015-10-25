@@ -1,4 +1,4 @@
-var clientId = '489147483891-kib7qts3suo7l23hk5i0kmvbmqftjnpl.apps.googleusercontent.com';
+var clientId = '480640858913-5bde6vrvp1a1hdpan1dasiqbvkj20li4.apps.googleusercontent.com';
 var scopes = 'https://www.googleapis.com/auth/prediction';
 
 function quandoCarregarAPagina() {
@@ -11,10 +11,7 @@ function checkAuth() {
 
 function quandoEstiverAutorizado(resultado) {
 	if (resultado && !resultado.error) {
-		var botaoDeSubmit = $('#cadastro button[type="submit"]');
-		botaoDeSubmit.removeAttr('disabled')
-					 .html(botaoDeSubmit.data('texto'));
-
+		// apos ter acesso ao gapi
 	} else if(!resultado) {
 		quandoCarregarAPagina();
 	} else {

@@ -1,23 +1,33 @@
 angular.module('controllers.tribos', ['services', 'utilitarios', 'mapa'])
   .controller('TribosCtrl', function($rootScope, $scope, geolocalizacao, Atividades, Tribos, mapa) {
+    var memoriaDeTribos = new MemoriaDeTribos();
+
     $scope.buscar = function() {
       var termoDaBusca = $scope.termoDaBusca.toUpperCase();
-      var tribosEncontradas = Tribos.todas().filter(function(tribo) {
+
+      memoriaDeTribos.restaurar($scope);
+
+      if (termoDaBusca === "")
+        return;
+
+      var tribosEncontradas = $scope.tribos.filter(function(tribo) {
         return tribo.categoria.toUpperCase().indexOf(termoDaBusca) > -1;
       });
 
       $scope.tribos = tribosEncontradas;
+      $scope.tribosPertos = tribosEncontradas;
     };
 
     $rootScope.$watch('coordenada', function(coordenada) {
       mapa.alterarReferencia(coordenada);
     });
 
-    $scope.$on('$ionicView.beforeEnter', function(event, viewData) {
+    $scope.$on('$ionicView.beforeEnter', function() {
       var atividadesDoUsuario = Atividades.selecionadas();
 
       $scope.tribos = Tribos.porAtividade(atividadesDoUsuario);
-      $scope.tribosPertos = Tribos.porAtividdeComDistanciaMaxima(5);
+      $scope.tribosPertos = Tribos.porAtividdeComDistanciaMaxima(atividadesDoUsuario, 5);
+      memoriaDeTribos.salvar($scope);
     });
 
     $scope.$watch('tribos', function(tribos) {
