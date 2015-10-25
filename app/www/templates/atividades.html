@@ -1,8 +1,8 @@
 <ion-view view-title="Refine ainda mais!">
 	<ion-content class="padding">
 		<div ng-repeat="atividade in atividades" class="list card">
-			<div class="item item-checkbox">
-                <div class="icone-{{categoria.nome}}"></div>
+			<div class="item item-checkbox {{this.atividade.selecionada ? 'selecionado' : ''}}">
+                <div class="icone-{{atividade.nome}}"></div>
 				<label class="checkbox">
 				    {{atividade.nome}}
 					<input type="checkbox" ng-checked="atividade.selecionada" ng-click="this.atividade.selecionada = !this.atividade.selecionada" />

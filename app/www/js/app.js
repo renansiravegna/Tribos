@@ -65,7 +65,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'filtros', 'controllers', 'util
     var jaPassouPelaHome = localStorage['jaPassouPelaHome'];
 
     if (jaPassouPelaHome)
-      return '/app/perfil';
+      return '/app/tribos';
 
     localStorage['jaPassouPelaHome'] = true;
     return '/home';
