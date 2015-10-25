@@ -23,7 +23,7 @@
   -o-backgorund-size: countain;
   backgorund-size: countain; }
 
-.sem-box-shadow, body .view-container .list, body .view-container .list .item {
+.sem-box-shadow, body .view-container .list, body .view-container .list .item, body .view-container .exibicao-tribos, body .view-container .card-tribos, body .view-container .exibicao-tribos .item, body .view-container .card-tribos .item {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   -ms-box-shadow: none;
@@ -151,6 +151,15 @@ body {
         top: 0;
         right: 0;
         left: 0; }
+  body .view-container .exibicao-tribos, body .view-container .card-tribos {
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.5) !important; }
+    body .view-container .exibicao-tribos .item, body .view-container .card-tribos .item {
+      background-color: #03634E; }
+      body .view-container .exibicao-tribos .item h2, body .view-container .exibicao-tribos .item p, body .view-container .exibicao-tribos .item span, body .view-container .card-tribos .item h2, body .view-container .card-tribos .item p, body .view-container .card-tribos .item span {
+        color: #fff; }
+      body .view-container .exibicao-tribos .item strong, body .view-container .card-tribos .item strong {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1.2em; }
 
 .icone-Esporte {
   background-image: url(icones/futebol.svg);
