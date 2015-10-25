@@ -4,9 +4,9 @@
 			<div class="item item-checkbox {{this.categoria.selecionada ? 'selecionado' : ''}}">
                 <div class="icone-{{categoria.nome}}"></div>
 				<label class="checkbox">
+				    {{categoria.nome}}  
 					<input type="checkbox" ng-checked="categoria.selecionada" ng-click="this.categoria.selecionada = !this.categoria.selecionada" />
 				</label>
-				{{categoria.nome}}
 			</div>
 		</div>
 

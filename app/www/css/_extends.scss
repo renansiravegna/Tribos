@@ -14,3 +14,7 @@
     @include vendors(backgorund-size, countain);
     @extend .pega-imagem;
 }
+
+.sem-box-shadow{
+    @include vendors(box-shadow, none);
+}

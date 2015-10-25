@@ -1,1 +1,10 @@
-<?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.0//EN'  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'><svg enable-background="new 0 0 24 24" id="Layer_1" version="1.0" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><circle cx="4" cy="4" r="2"/><path d="M5.7,10.6l7.7,7.7c-0.9,0-1.9-0.2-2.8-0.5c-0.4-0.1-1.8-0.3-2.4,0.2c-1.3,1.3-2.4,3-3,3.6c-0.6,0.6-1.5,0.4-2.4-0.5  c-0.8-0.8-1.1-1.8-0.5-2.4C3,18.2,4.7,17,6,15.8c0.6-0.6,0.3-2.2,0.2-2.4C5.8,12.5,5.7,11.5,5.7,10.6z M19.7,4.3  C16,0.5,11,1.9,7.9,4.9c-1.1,1.1-1.9,2.5-2.1,4l9.3,9.3c1.5-0.3,2.9-1,4-2.1C22.1,13,23.5,8,19.7,4.3z"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="89.2 509.8 900.9 897.6" enable-background="new 89.2 509.8 900.9 897.6" xml:space="preserve">
+<circle fill="#FFFFFF" cx="180" cy="600" r="90"/>
+<path fill="#FFFFFF" d="M256.5,897L603,1243.5c-40.5,0-85.5-9-126-22.5c-18-4.5-81-13.5-108,9c-58.5,58.5-108,135-135,162
+	s-67.5,18-108-22.5c-36-36-49.5-81-22.5-108C135,1239,211.5,1185,270,1131c27-27,13.5-99,9-108C261,982.5,256.5,937.5,256.5,897z
+	 M886.5,613.5c-166.5-171-391.5-108-531,27C306,690,270,753,261,820.5L679.5,1239c67.5-13.5,130.5-45,180-94.5
+	C994.5,1005,1057.5,780,886.5,613.5z"/>
+</svg>

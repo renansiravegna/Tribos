@@ -1,13 +1,16 @@
 .icone{
     
-    &-Esportes{
+    &-Esporte{
         @extend .pega-imagem;
-        background-image: url(icones/patins.svg);
-        @include icones(24px);
+        background-image: url(icones/futebol.svg);
+        @include icones(32px);
     }
     
-    &-videogame{
+    &-Jogos{
         background-image: url(icones/videogame.svg);
+        @extend .pega-imagem;
+        @include icones(32px);
+        height: 23px;
     }
     
 }
