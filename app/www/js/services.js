@@ -84,7 +84,7 @@ angular.module('services', [])
 
 	function tratarInformacoesCalculadas(tribos) {
 		return tribos.map(function(tribo) {
-			tribo.data = moment(new Date()).format('DD/MM/YYYY HH:mm:ss');
+			tribo.dataFormatada = moment(tribo.data).format('DD/MM/YYYY HH:mm:ss');
 			tribo.distancia = calcularDistancia.calcular($rootScope.coordenada, tribo.coordenada);
 
 			return tribo;
