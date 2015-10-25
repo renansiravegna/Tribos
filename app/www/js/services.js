@@ -15,7 +15,12 @@ angular.module('services', [])
 		},
 
 		selecionadas: function() {
-			return localStorage.get('categorias');
+			var categorias = localStorage.get('categorias') || [];
+			var categoriasSelecionadas = categorias.filter(function(categoria) {
+				return categoria.selecionada;
+			});
+
+			return categoriasSelecionadas;
 		},
 
 		salvar: function(categorias) {
@@ -61,7 +66,11 @@ angular.module('services', [])
 		},
 
 		selecionadas: function() {
-			return localStorage.get('atividades', dados);
+			var atividades = localStorage.get('atividades') || [];
+
+			return atividades.filter(function(atividade) {
+				return atividade.selecionada;
+			});
 		},
 
 		salvar: function(atividades) {

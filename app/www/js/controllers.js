@@ -18,7 +18,7 @@ angular.module('starter.controllers', ['services', 'utilitarios', 'mapa'])
 
   $scope.$on('$ionicView.beforeEnter', function(event, viewData) {
     var atividadesDoUsuario = Atividades.selecionadas();
-    
+
     $scope.tribos = Tribos.porAtividade(atividadesDoUsuario);
     $scope.tribosPertos = Tribos.porAtividdeComDistanciaMaxima(5);
   });
@@ -34,28 +34,38 @@ angular.module('starter.controllers', ['services', 'utilitarios', 'mapa'])
 })
 
 .controller('PerfilCtrl', function($scope, $state, Categorias) {
+  var categoriasSelecionadas = Categorias.selecionadas();
+
   $scope.categorias = Categorias.todas();
 
-  $scope.salvar = function() {
-    var categoriasSelecionadas = $scope.categorias.filter(function(categoria) {
-      return categoria.selecionada;
+  categoriasSelecionadas.map(function(categoriaSelecionada) {
+    $scope.categorias.map(function(categoria) {
+      if (categoria.nome === categoriaSelecionada.nome)
+        categoria.selecionada = true;
     });
+  });
 
-    Categorias.salvar(categoriasSelecionadas);
+  $scope.salvar = function() {
+    Categorias.salvar($scope.categorias);
     $state.go('app.atividades');
   };
 })
 
 .controller('AtividadesCtrl', function($scope, $state, Categorias, Atividades) {
   var categoriasSelecionadas = Categorias.selecionadas();
+  var atividadesSelecionadas = Atividades.selecionadas();
+
   $scope.atividades = Atividades.porCategoria(categoriasSelecionadas);
 
-  $scope.salvar = function() {
-    var atividadesSelecionadas = $scope.atividades.filter(function(atividade) {
-      return atividade.selecionada;
+  atividadesSelecionadas.map(function(atividadesSelecionada) {
+    $scope.atividades.map(function(atividade) {
+      if (atividade.nome === atividadesSelecionada.nome)
+        atividade.selecionada = true;
     });
+  });
 
-    Atividades.salvar(atividadesSelecionadas);
+  $scope.salvar = function() {
+    Atividades.salvar($scope.atividades);
     $state.go('app.tribos');
   }
 });

@@ -55,5 +55,5 @@ angular.module('starter', ['ionic', 'ngCordova', 'filtros', 'starter.controllers
     }
   });
 
-  $urlRouterProvider.otherwise('/app/tribos');
+  $urlRouterProvider.otherwise('/app/perfil');
 });
