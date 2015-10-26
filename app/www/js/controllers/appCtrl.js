@@ -1,2 +1,2 @@
 angular.module('controllers.app', [])
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {});
+	.controller('AppCtrl', function($scope, $ionicModal, $timeout) {});
