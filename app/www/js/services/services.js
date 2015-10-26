@@ -1,1 +1,1 @@
-angular.module('services', ['services.categorias', 'services.atividades', 'services.tribos']);
+angular.module('services', ['services.categorias', 'services.atividades', 'services.tribos', 'services.api']);

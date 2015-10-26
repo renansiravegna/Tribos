@@ -1,5 +1,5 @@
 angular.module('services.atividades', [])
-	.factory('Atividades', function($http, localStorage) {
+	.factory('Atividades', function(localStorage) {
 		var dados = [{
 			nome: 'Patins',
 			categoria: 'Esporte'

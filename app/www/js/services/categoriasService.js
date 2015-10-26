@@ -1,11 +1,8 @@
-angular.module('services.categorias', [])
-	.factory('Categorias', function($http, localStorage) {
+angular.module('services.categorias', ['services.api'])
+	.factory('Categorias', function(TribosApi, localStorage) {
 		return {
-			todas: function(callback) {
-				return $http.get('http://tribos-1096.appspot.com/s/categorias/', function() {
-					if (callback)
-						callback.apply(this, [arguments]);
-				});
+			todas: function() {
+				return TribosApi.categorias();
 			},
 
 			selecionadas: function() {
@@ -18,7 +15,7 @@ angular.module('services.categorias', [])
 			},
 
 			obterPorAtividade: function(atividade, callback) {
-				$http.get('http://tribos-1096.appspot.com/s/categorias/').then(function(response) {
+				TribosApi.categorias().then(function(response) {
 					var categorias = response.data;
 					var categoriaFiltradas = categorias.filter(function(categoria) {
 						return categoria.atividades.indexOf(atividade) > -1;

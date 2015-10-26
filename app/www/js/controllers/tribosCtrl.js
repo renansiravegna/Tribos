@@ -30,7 +30,7 @@ angular.module('controllers.tribos', ['services', 'utilitarios', 'mapa'])
 
 
 				$scope.tribos = Tribos.porAtividade(atividadesDoUsuario, tribos);
-				$scope.tribosPertos = Tribos.porAtividdeComDistanciaMaxima($scope.tribos, null, 5);
+				$scope.tribosPertos = Tribos.porAtividdeComDistanciaMaxima($scope.tribos, 5);
 				memoriaDeTribos.salvar($scope);
 			});
 		});
